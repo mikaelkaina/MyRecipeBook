@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/MyRecipeBook.Api/MyRecipeBook.Api.csproj" Id="bd5d5842-2d1b-4b31-b758-93208de065e4" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
