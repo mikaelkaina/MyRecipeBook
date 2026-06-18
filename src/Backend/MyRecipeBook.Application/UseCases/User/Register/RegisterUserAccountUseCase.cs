@@ -15,7 +15,7 @@ public class RegisterUserAccountUseCase
         {
             var errorMensages = result.Errors.Select(error => error.ErrorMessage).ToList();
 
-            throw new ErrorOnValidationException(errorMensages);
+            throw new ArgumentException("errorMensages");
         }
     }
 }
