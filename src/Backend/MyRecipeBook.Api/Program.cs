@@ -29,6 +29,8 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 
 builder.Services.AddMvc(options => options.Filters.Add<ExceptionFilter>());
 
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
 var app = builder.Build();
 
 var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>();
