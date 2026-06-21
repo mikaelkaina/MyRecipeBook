@@ -3,9 +3,9 @@ using MyRecipeBook.Application.UseCases.User.Register;
 
 namespace MyRecipeBook.Application;
 
-public class DependencyInjection
+public static class DependencyInjection
 {
-    public static void AddApplication(IServiceCollection services)
+    public static void AddApplication(this IServiceCollection services)
     {
         services.AddScoped<IRegisterUserAccountUseCase , RegisterUserAccountUseCase>();
     }
