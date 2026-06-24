@@ -1,5 +1,5 @@
-﻿using MyRecipeBook.Application.UseCases.User.Register;
-using MyRecipeBook.Communication.Requets;
+﻿using CommoTestsUtilities.Requests;
+using MyRecipeBook.Application.UseCases.User.Register;
 
 namespace Validators.Tests.User.Register;
 
@@ -8,12 +8,7 @@ public class RegisterUserAccountValidationTests
     [Fact]
     public void Sucess()
     {
-        var request = new RequestRegisterUserAccountJson
-        {
-            Name = "John Doe",
-            Email = "john.doe@example.com",
-            Password = "Password123!"
-        };
+        var request = RequestRegisterUserAccountJsonBuilder.Build();
 
         var validator = new RegisterUserAccountValidation();
 
