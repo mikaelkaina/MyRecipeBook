@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using MyRecipeBook.Communication.Requets;
 
-namespace CommoTestsUtilities.Requests;
+namespace CommonTestsUtilities.Requests;
 
 public class RequestRegisterUserAccountJsonBuilder
 {
