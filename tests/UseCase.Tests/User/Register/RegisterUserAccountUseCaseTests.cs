@@ -69,6 +69,7 @@ public class RegisterUserAccountUseCaseTests
         var passwordHasher = new IPasswordHasherBuilder().Build();
 
         var userReadOnlyRepositoryBuilder = new IUserReadOnlyRepositoryBuilder();
+
         if(emailThatAlreadyExists.IsNotEmpty())
             userReadOnlyRepositoryBuilder.ExistActiveUserWithEmail(emailThatAlreadyExists);
 
