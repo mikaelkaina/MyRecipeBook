@@ -1,6 +1,12 @@
-﻿using CommonTestsUtilities.Requests;
+﻿using Azure;
+using CommonTestsUtilities.Requests;
 using Microsoft.AspNetCore.Mvc.Testing;
+using MyRecipeBook.Domain.Extensions;
+using MyRecipeBook.Exception;
+using Shouldly;
+using System.Net;
 using System.Net.Http.Json;
+using System.Text.Json;
 
 namespace WebApi.Tests.User.Register;
 
@@ -18,7 +24,16 @@ public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Prog
     {
         var request = RequestRegisterUserAccountJsonBuilder.Build();
         
-        await _httpClient.PostAsJsonAsync("/users", request);
+        var response = await _httpClient.PostAsJsonAsync("/users", request);
+
+        response.StatusCode.ShouldBe(HttpStatusCode.Created);
+
+        await using var responseBody = await response.Content.ReadAsStreamAsync();
+
+        var responseData = await JsonDocument.ParseAsync(responseBody);
+
+        responseData.RootElement.GetProperty("name").GetString().ShouldBe(request.Name);
+        responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().ShouldBeEmpty();
     }
 
     [Fact]
@@ -28,6 +43,23 @@ public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Prog
 
         request.Name = string.Empty;
 
-        await _httpClient.PostAsJsonAsync("/users", request);
+        var response = await _httpClient.PostAsJsonAsync("/users", request);
+        
+        response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+
+        await using var responseBody = await response.Content.ReadAsStreamAsync();
+
+        var responseData = await JsonDocument.ParseAsync(responseBody);
+
+        responseData.RootElement.GetProperty("errors").EnumerateArray();
+
+        var errors = responseData.RootElement.GetProperty("errors").EnumerateArray();
+
+        errors.ShouldSatisfyAllConditions(errorsList =>
+        {
+            errorsList.Count().ShouldBe(1);
+            errorsList.ShouldContain(error => error.GetString().IsNotEmpty()
+            && error.GetString()!.Equals(ResourceMessagesException.VALIDATION_NAME_REQUIRED));
+        });
     }
 }
