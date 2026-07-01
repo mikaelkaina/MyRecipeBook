@@ -19,11 +19,14 @@ public class RegisterUserAccountValidationTests
         result.IsValid.ShouldBeTrue();
     }
 
-    [Fact]
-    public void Validate_SholdHaveError_WhenNameIsEmpty()
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("      ")]
+    public void Validate_SholdHaveError_WhenNameIsEmpty(string? name)
     {
         var resquest = RequestRegisterUserAccountJsonBuilder.Build();
-        resquest.Name = string.Empty;
+        resquest.Name = name!;
 
         var validator = new RegisterUserAccountValidation();
 
@@ -37,11 +40,14 @@ public class RegisterUserAccountValidationTests
         });
     }
 
-    [Fact]
-    public void Validate_SholdHaveError_WhenEmailIsEmpty()
+    [Theory]
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("      ")]
+    public void Validate_SholdHaveError_WhenEmailIsEmpty(string? email)
     {
         var resquest = RequestRegisterUserAccountJsonBuilder.Build();
-        resquest.Email = string.Empty;
+        resquest.Email = email!;
 
         var validator = new RegisterUserAccountValidation();
 

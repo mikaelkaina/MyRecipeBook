@@ -19,7 +19,7 @@ public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Prog
     {
         _httpClient = factory.CreateClient();
     }
-    //
+ 
     [Fact]
     public async Task Success()
     {
