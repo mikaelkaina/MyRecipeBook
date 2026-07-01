@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text.Json;
+using WebApi.Tests.InLineData;
 
 namespace WebApi.Tests.User.Register;
 
@@ -37,15 +38,16 @@ public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Prog
         responseData.RootElement.GetProperty("tokens").GetProperty("accessToken").GetString().ShouldBeEmpty();
     }
 
-    [Fact]
-    public async Task Validate_ShouldBeAnErrorResponse_WheNameIsEmpty()
+    [Theory]
+    [ClassData(typeof(CultureInLineData))]
+    public async Task Validate_ShouldBeAnErrorResponse_WheNameIsEmpty(string culture)
     {
         var request = RequestRegisterUserAccountJsonBuilder.Build();
 
         request.Name = string.Empty;
 
         _httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
-        _httpClient.DefaultRequestHeaders.AcceptLanguage.ParseAdd("pt-BR");
+        _httpClient.DefaultRequestHeaders.AcceptLanguage.ParseAdd(culture);
 
         var response = await _httpClient.PostAsJsonAsync(REQUEST_URI, request);
         
@@ -59,14 +61,14 @@ public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Prog
 
         var errors = responseData.RootElement.GetProperty("errors").EnumerateArray();
 
-        var expectedError = ResourceMessagesException.ResourceManager.GetString("VALIDATION_NAME_REQUIRED",
-            new CultureInfo("pt-BR"));
+        var expectedErrorMessage = ResourceMessagesException.ResourceManager.GetString("VALIDATION_NAME_REQUIRED",
+            new CultureInfo(culture));
 
         errors.ShouldSatisfyAllConditions(errorsList =>
         {
             errorsList.Count().ShouldBe(1);
             errorsList.ShouldContain(error => error.GetString().IsNotEmpty()
-            && error.GetString()!.Equals(expectedError));
+            && error.GetString()!.Equals(expectedErrorMessage));
         });
     }
 }
