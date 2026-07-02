@@ -97,6 +97,15 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid email or password.
+        /// </summary>
+        public static string VALIDATION_LOGIN_INVALID {
+            get {
+                return ResourceManager.GetString("VALIDATION_LOGIN_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Name is required..
         /// </summary>
         public static string VALIDATION_NAME_REQUIRED {

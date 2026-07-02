@@ -129,6 +129,9 @@
   <data name="VALIDATION_EMAIL_REQUIRED" xml:space="preserve">
     <value>Email is required.</value>
   </data>
+  <data name="VALIDATION_LOGIN_INVALID" xml:space="preserve">
+    <value>Invalid email or password</value>
+  </data>
   <data name="VALIDATION_NAME_REQUIRED" xml:space="preserve">
     <value>Name is required.</value>
   </data>
