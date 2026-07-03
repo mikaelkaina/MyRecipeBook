@@ -38,7 +38,7 @@ public class RegisterUserAccountUseCaseTests
 
         var exception = await useCase.Execute(request).ShouldThrowAsync<ErrorOnValidationException>();
 
-        exception.GetErrorsMessages().ShouldSatisfyAllConditions(errorMensages =>
+        exception.GetErrorMessages().ShouldSatisfyAllConditions(errorMensages =>
         {
             errorMensages.Count.ShouldBe(1);
             errorMensages.ShouldContain(ResourceMessagesException.VALIDATION_NAME_REQUIRED);
@@ -53,7 +53,7 @@ public class RegisterUserAccountUseCaseTests
         var useCase = CreateUseCase(request.Email);
 
         var exception = await useCase.Execute(request).ShouldThrowAsync<ErrorOnValidationException>();
-        exception.GetErrorsMessages().ShouldSatisfyAllConditions(errorMensages =>
+        exception.GetErrorMessages().ShouldSatisfyAllConditions(errorMensages =>
         {
             errorMensages.Count.ShouldBe(1);
             errorMensages.ShouldContain(ResourceMessagesException.VALIDATION_EMAIL_ALREADY_EXISTS);
