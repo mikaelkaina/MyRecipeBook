@@ -15,7 +15,7 @@ public class LoginWithEmailAndPasswordUseCaseTests
     [Fact]
     public async Task Success()
     {
-        var user = UserBuilder.Build();
+        var (user, _) = UserBuilder.Build();
         var request = RequestLoginJsonBuilder.Build();
         request.Email = user.Email;
 
@@ -48,7 +48,7 @@ public class LoginWithEmailAndPasswordUseCaseTests
     [Fact]
     public async Task ShouldThrowException_WhenPasswordIsIncorrect()
     {
-        var user = UserBuilder.Build();
+        var (user, _) = UserBuilder.Build();
         var request = RequestLoginJsonBuilder.Build();
         request.Email = user.Email;
 

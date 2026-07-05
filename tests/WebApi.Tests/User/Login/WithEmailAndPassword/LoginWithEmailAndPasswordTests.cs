@@ -15,7 +15,7 @@ namespace WebApi.Tests.User.Login.WithEmailAndPassword;
 
 public class LoginWithEmailAndPasswordTests : IClassFixture<CustomWebApplicationFactory>
 {
-    private const string REQUEST_URI = "/api/authentication";
+    private const string REQUEST_URI = "/authentication";
     private readonly HttpClient _httpClient;
     private readonly CustomWebApplicationFactory _factory;
 
