@@ -25,5 +25,3 @@ public static class DependencyInjection
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
     }
 }
-
-//

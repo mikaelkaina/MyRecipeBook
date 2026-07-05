@@ -1,25 +1,21 @@
 ﻿using Bogus;
-using CommonTestsUtilities.Secutiry;
 using MyRecipeBook.Domain.Entities;
+using MyRecipeBook.Infrastructure.Security.PasswordHashing;
 
 namespace CommonTestsUtilities.Entities;
 
 public class UserBuilder
 {
-    public static User Build()
+    public static (User user, string plainPassword) Build()
     {
-        return new Faker<User>()
-            .RuleFor(user => user.Name, faker => faker.Person.FirstName)
-            .RuleFor(user => user.Email, (faker, user) => faker.Internet.Email(user.Name))
-            .RuleFor(user => user.Password, _ => GenerateRandomPassword());
-    }
+        var plainPassword = new Faker().Internet.Password();
+        var passwordHasher = new Argon2PasswordHasher();
 
-    private static string GenerateRandomPassword()
-    {
-        var passwordEncripter = new IPasswordHasherBuilder().Build();
+        var user = new Faker<User>()
+            .RuleFor(u => u.Name, f => f.Person.FirstName)
+            .RuleFor(u => u.Email, (f, u) => f.Internet.Email(u.Name))
+            .RuleFor(u => u.Password, _ => passwordHasher.HashPassword(plainPassword));
 
-        var password = new Faker().Internet.Password();
-
-        return passwordEncripter.HashPassword(password);
+        return (user, plainPassword);
     }
 }
