@@ -16,6 +16,7 @@ namespace WebApi.Tests.User.Login.WithEmailAndPassword;
 public class LoginWithEmailAndPasswordTests : IClassFixture<CustomWebApplicationFactory>
 {
     private const string REQUEST_URI = "/authentication";
+
     private readonly HttpClient _httpClient;
     private readonly CustomWebApplicationFactory _factory;
 
@@ -69,8 +70,8 @@ public class LoginWithEmailAndPasswordTests : IClassFixture<CustomWebApplication
 
         var errors = responseData.RootElement.GetProperty("errors").EnumerateArray();
 
-        var expectedErrorMessage = ResourceMessagesException.ResourceManager
-            .GetString("VALIDATION_LOGIN_INVALID", new CultureInfo(culture));
+        var expectedErrorMessage = ResourceMessagesException.ResourceManager.GetString("VALIDATION_LOGIN_INVALID",
+            new CultureInfo(culture));
 
         errors.ShouldSatisfyAllConditions(errorsList =>
         {
