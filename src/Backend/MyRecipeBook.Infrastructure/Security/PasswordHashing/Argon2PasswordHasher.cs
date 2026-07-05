@@ -1,8 +1,11 @@
-﻿using MyRecipeBook.Domain.Security.PasswordHashing;
-using Konscious.Security.Cryptography;
+﻿using Konscious.Security.Cryptography;
+using MyRecipeBook.Domain.Security.PasswordHashing;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 
+[assembly: InternalsVisibleTo("WebApi.Tests")]
+[assembly: InternalsVisibleTo("CommonTestsUtilities")]
 namespace MyRecipeBook.Infrastructure.Security.PasswordHashing;
 
 internal sealed class Argon2PasswordHasher : IPasswordHasher
