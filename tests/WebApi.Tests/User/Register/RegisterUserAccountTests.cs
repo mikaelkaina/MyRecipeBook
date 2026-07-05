@@ -67,8 +67,7 @@ public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Prog
         errors.ShouldSatisfyAllConditions(errorsList =>
         {
             errorsList.Count().ShouldBe(1);
-            errorsList.ShouldContain(error => error.GetString().IsNotEmpty()
-            && error.GetString()!.Equals(expectedErrorMessage));
+            errorsList.ShouldContain(error => error.GetString()!.Equals(expectedErrorMessage));
         });
     }
 }
