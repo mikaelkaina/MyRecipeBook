@@ -1,6 +1,5 @@
 ﻿using CommonTestsUtilities.Requests;
 using Microsoft.AspNetCore.Mvc.Testing;
-using MyRecipeBook.Domain.Extensions;
 using MyRecipeBook.Exception;
 using Shouldly;
 using System.Globalization;
