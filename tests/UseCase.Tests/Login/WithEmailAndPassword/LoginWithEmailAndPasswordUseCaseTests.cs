@@ -26,7 +26,7 @@ public class LoginWithEmailAndPasswordUseCaseTests
         result.ShouldNotBeNull();
         result.Tokens.ShouldNotBeNull();
         result.Name.ShouldBe(user.Name);
-        result.Tokens.AccessToken.ShouldBeNullOrEmpty();
+        result.Tokens.AccessToken.ShouldNotBeNullOrEmpty();
         result.Tokens.RefreshToken.ShouldBeNullOrEmpty();
     }
 
@@ -64,14 +64,16 @@ public class LoginWithEmailAndPasswordUseCaseTests
 
     private LoginWithEmailAndPasswordUseCase CreateUseCase(string? password = null, MyRecipeBook.Domain.Entities.User? user = null)
     {
+        var accessTokenGeneratorBuilder = IAccessTokenGeneratorBuilder.Build();
+
         var passwordHasherBuilder = new IPasswordHasherBuilder();
         if(password.IsNotEmpty())
             passwordHasherBuilder.VerifyPassword(password);
         
-         var userReadOnlyRepositoryBuilder = new IUserReadOnlyRepositoryBuilder();
+        var userReadOnlyRepositoryBuilder = new IUserReadOnlyRepositoryBuilder();
         if(user is not null)
             userReadOnlyRepositoryBuilder.GetByEmail(user);
 
-        return new LoginWithEmailAndPasswordUseCase(passwordHasherBuilder.Build(), userReadOnlyRepositoryBuilder.Build());
+        return new LoginWithEmailAndPasswordUseCase(passwordHasherBuilder.Build(), userReadOnlyRepositoryBuilder.Build(), accessTokenGeneratorBuilder);
     }
 }
