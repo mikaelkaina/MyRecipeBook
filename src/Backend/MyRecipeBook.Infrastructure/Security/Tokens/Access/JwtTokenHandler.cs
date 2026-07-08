@@ -5,9 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Security.Tokens;
 
-namespace MyRecipeBook.Infrastructure.Security.Tokens.Acess;
+namespace MyRecipeBook.Infrastructure.Security.Tokens.Access;
 
-public class JwtTokenHandler : IAcessTokenGenerator
+public class JwtTokenHandler : IAccessTokenGenerator
 {
     private readonly uint _expirationTimeMinutes;
     private readonly string _signingKey;
