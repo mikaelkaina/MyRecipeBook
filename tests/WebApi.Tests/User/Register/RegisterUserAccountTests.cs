@@ -8,8 +8,6 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using WebApi.Tests.InLineData;
 
-//
-
 namespace WebApi.Tests.User.Register;
 
 public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Program>>
