@@ -22,7 +22,7 @@ internal class LoggedUser : ILoggedUser
     {
         var userId = GetUserId();
 
-        return await _dbContext.Users.FirstAsync(user => user.Active && user.Id == userId);
+        return await _dbContext.Users.AsNoTracking().FirstAsync(user => user.Active && user.Id == userId);
     }
 
     public Guid GetUserId()
@@ -33,8 +33,8 @@ internal class LoggedUser : ILoggedUser
 
         var jsonWebToken = hanlder.ReadJsonWebToken(accessToken);
 
-        var subjct = jsonWebToken.Claims.First(claim => claim.Type.Equals(JwtRegisteredClaimNames.Sub));
+        var subjct = jsonWebToken.Subject;
 
-        return Guid.Parse(subjct.Value);
+        return Guid.Parse(subjct);
     }
 }
