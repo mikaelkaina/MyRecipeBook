@@ -29,9 +29,9 @@ internal class LoggedUser : ILoggedUser
     {
         var accessToken = _accessTokenProvider.GetToken();
 
-        var hanlder = new JsonWebTokenHandler();
+        var handler = new JsonWebTokenHandler();
 
-        var jsonWebToken = hanlder.ReadJsonWebToken(accessToken);
+        var jsonWebToken = handler.ReadJsonWebToken(accessToken);
 
         var subjct = jsonWebToken.Subject;
 
