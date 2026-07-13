@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyRecipeBook.Infrastructure.DataAcess;
 
@@ -10,5 +11,17 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
         var scope = Services.CreateAsyncScope();
         return scope.ServiceProvider.GetRequiredService<MyRecipeBookDbContext>();
+    }
+
+    internal string GetJwtSigningKey()
+    {
+        var configuration = Services.GetRequiredService<IConfiguration>();
+        return configuration.GetValue<string>("Jwt:SigningKey")!;
+    }
+
+    internal uint GetJwtExpirationTimeMinutes()
+    {
+        var configuration = Services.GetRequiredService<IConfiguration>();
+        return configuration.GetValue<uint>("Jwt:ExpirationTimeMinutes")!;
     }
 }
