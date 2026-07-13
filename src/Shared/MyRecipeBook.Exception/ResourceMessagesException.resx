@@ -141,6 +141,9 @@
   <data name="VALIDATION_NAME_REQUIRED" xml:space="preserve">
     <value>Name is required.</value>
   </data>
+  <data name="VALIDATION_PASSWORD_MIN_LENGTH" xml:space="preserve">
+    <value>Passwor must be at least 6 characters long.</value>
+  </data>
   <data name="VALIDATION_PASSWORD_REQUIRED" xml:space="preserve">
     <value>Password is required</value>
   </data>
