@@ -12,7 +12,7 @@ namespace WebApi.Tests.User.Register;
 
 public class RegisterUserAccountTests : IClassFixture<WebApplicationFactory<Program>>
 {
-    private const string REQUEST_URI = "/users";
+    private const string REQUEST_URI = "/api/users";
     private readonly HttpClient _httpClient;
 
     public RegisterUserAccountTests(WebApplicationFactory<Program> factory)

@@ -15,5 +15,4 @@ public class ILoggedUderBuilder
 
         return mock.Object;
     }
-
 }

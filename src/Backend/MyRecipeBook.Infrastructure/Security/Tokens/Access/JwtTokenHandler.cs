@@ -1,10 +1,13 @@
-﻿using System.Security.Claims;
-using System.Text;
-using Microsoft.IdentityModel.JsonWebTokens;
+﻿using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Security.Tokens;
+using System.Runtime.CompilerServices;
+using System.Security.Claims;
+using System.Text;
 
+[assembly: InternalsVisibleTo("WebApi.Tests")]
+[assembly: InternalsVisibleTo("CommonTestsUtilities")]
 namespace MyRecipeBook.Infrastructure.Security.Tokens.Access;
 
 public class JwtTokenHandler : IAccessTokenGenerator
