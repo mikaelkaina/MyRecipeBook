@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MyRecipeBook.Application.UseCases.Shared.Validators;
 using MyRecipeBook.Communication.Requets;
 
 namespace MyRecipeBook.Application.UseCases.ChangePassword;
@@ -7,6 +8,6 @@ public class ChangePasswordValidator : AbstractValidator<RequestChangePasswordJs
 {
     public ChangePasswordValidator()
     {
-        
+        RuleFor(request => request.NewPassword).Password();
     }
 }

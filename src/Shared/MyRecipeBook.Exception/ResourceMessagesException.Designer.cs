@@ -133,6 +133,15 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Passwor must be at least 6 characters long..
+        /// </summary>
+        public static string VALIDATION_PASSWORD_MIN_LENGTH {
+            get {
+                return ResourceManager.GetString("VALIDATION_PASSWORD_MIN_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Password is required.
         /// </summary>
         public static string VALIDATION_PASSWORD_REQUIRED {
