@@ -5,7 +5,7 @@ using MyRecipeBook.Domain.Security.PasswordHashing;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Exception.ExceptionsBase;
 
-namespace MyRecipeBook.Application.UseCases.ChangePassword;
+namespace MyRecipeBook.Application.UseCases.User.ChangePassword;
 
 public class ChangePasswordUseCase : IChangePasswordUseCase
 {

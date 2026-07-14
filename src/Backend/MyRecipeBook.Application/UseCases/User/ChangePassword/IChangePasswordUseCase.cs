@@ -1,6 +1,6 @@
 ﻿using MyRecipeBook.Communication.Requets;
 
-namespace MyRecipeBook.Application.UseCases.ChangePassword;
+namespace MyRecipeBook.Application.UseCases.User.ChangePassword;
 
 public interface IChangePasswordUseCase
 {
