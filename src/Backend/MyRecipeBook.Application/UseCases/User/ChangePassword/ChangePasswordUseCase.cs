@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using MyRecipeBook.Communication.Requets;
 using MyRecipeBook.Domain.Identity;
+using MyRecipeBook.Domain.Repositories.User;
 using MyRecipeBook.Domain.Security.PasswordHashing;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Exception.ExceptionsBase;
@@ -11,11 +12,14 @@ public class ChangePasswordUseCase : IChangePasswordUseCase
 {
     private readonly IPasswordHasher _passwordHasher;
     private readonly ILoggedUser _loggedUser;
+    private readonly IUserUpdateOnlyRepository _userUpdateOnlyRepository;
 
-    public ChangePasswordUseCase(IPasswordHasher passwordHasher, ILoggedUser loggedUser)
+    public ChangePasswordUseCase(IPasswordHasher passwordHasher,
+        ILoggedUser loggedUser, IUserUpdateOnlyRepository userUpdateOnlyRepository)
     {
         _passwordHasher = passwordHasher;
         _loggedUser = loggedUser;
+        _userUpdateOnlyRepository = userUpdateOnlyRepository;
     }
 
     public async Task Execute(RequestChangePasswordJson request)
@@ -23,6 +27,10 @@ public class ChangePasswordUseCase : IChangePasswordUseCase
         var loggedUser = await _loggedUser.Get();
 
         Validate(request, loggedUser);
+
+        var hashedPassword = _passwordHasher.HashPassword(request.NewPassword);
+
+        await _userUpdateOnlyRepository.UpdatePassword(loggedUser.Id, hashedPassword);
     }
 
     private void Validate(RequestChangePasswordJson request, Domain.Entities.User loggedUser)
