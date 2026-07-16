@@ -4,6 +4,7 @@ using MyRecipeBook.Exception;
 using Shouldly;
 using System.Globalization;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using WebApi.Tests.InLineData;
 using WebApi.Tests.Resource;
@@ -37,7 +38,7 @@ public class GetUserProfileTests : IClassFixture<CustomWebApplicationFactory>
             _factory.GetJwtExpirationTimeMinutes());
 
         _httpClient.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            new AuthenticationHeaderValue("Bearer", token);
 
         var response = await _httpClient.GetAsync(REQUEST_URI);
 
