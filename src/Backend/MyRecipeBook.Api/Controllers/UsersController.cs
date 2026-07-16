@@ -35,7 +35,7 @@ public class UsersController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPut]
+    [HttpPut("profile")]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
@@ -48,7 +48,7 @@ public class UsersController : ControllerBase
         return NoContent();
     }
 
-    [HttpPut]
+    [HttpPut("password")]
     [Authorize]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
