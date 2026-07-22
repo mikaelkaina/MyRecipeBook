@@ -32,7 +32,7 @@ public class ChangePasswordUseCase : IChangePasswordUseCase
 
         await _userUpdateOnlyRepository.UpdatePassword(loggedUser.Id, hashedPassword);
     }
-
+    //
     private void Validate(RequestChangePasswordJson request, Domain.Entities.User loggedUser)
     {
         var result = new ChangePasswordValidator().Validate(request);
