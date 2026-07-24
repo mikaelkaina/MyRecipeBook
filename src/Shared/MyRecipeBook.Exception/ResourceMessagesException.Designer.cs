@@ -79,11 +79,47 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a You must add at least one ingredient..
+        /// </summary>
+        public static string VALIDATION_AT_LEAST_ONE_INGREDIENT {
+            get {
+                return ResourceManager.GetString("VALIDATION_AT_LEAST_ONE_INGREDIENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a You must add at least one instruction..
+        /// </summary>
+        public static string VALIDATION_AT_LEAST_ONE_INSTRUCTION {
+            get {
+                return ResourceManager.GetString("VALIDATION_AT_LEAST_ONE_INSTRUCTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The selected preparation time is invalid..
+        /// </summary>
+        public static string VALIDATION_COOK_TIME_INVALID {
+            get {
+                return ResourceManager.GetString("VALIDATION_COOK_TIME_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The current password is incorrect..
         /// </summary>
         public static string VALIDATION_CURRENT_PASSWORD {
             get {
                 return ResourceManager.GetString("VALIDATION_CURRENT_PASSWORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a One of the selected dish types is invalid..
+        /// </summary>
+        public static string VALIDATION_DISH_TYPE_INVALID {
+            get {
+                return ResourceManager.GetString("VALIDATION_DISH_TYPE_INVALID", resourceCulture);
             }
         }
         
@@ -111,6 +147,51 @@ namespace MyRecipeBook.Exception {
         public static string VALIDATION_EMAIL_REQUIRED {
             get {
                 return ResourceManager.GetString("VALIDATION_EMAIL_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The ingredient cannot be empty..
+        /// </summary>
+        public static string VALIDATION_INGREDIENT_EMPTY {
+            get {
+                return ResourceManager.GetString("VALIDATION_INGREDIENT_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The ingredient must have a maximum of 250 characters..
+        /// </summary>
+        public static string VALIDATION_INGREDIENT_MAX_LENGTH {
+            get {
+                return ResourceManager.GetString("VALIDATION_INGREDIENT_MAX_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The instruction description must have a maximum of 2,000 characters..
+        /// </summary>
+        public static string VALIDATION_INSTRUCTION_DESCRIPTION_MAX_LENGTH {
+            get {
+                return ResourceManager.GetString("VALIDATION_INSTRUCTION_DESCRIPTION_MAX_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The instruction description is mandatory..
+        /// </summary>
+        public static string VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED {
+            get {
+                return ResourceManager.GetString("VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The instruction order must be greater than 0..
+        /// </summary>
+        public static string VALIDATION_INSTRUCTION_ORDER_INVALID {
+            get {
+                return ResourceManager.GetString("VALIDATION_INSTRUCTION_ORDER_INVALID", resourceCulture);
             }
         }
         
@@ -156,6 +237,24 @@ namespace MyRecipeBook.Exception {
         public static string VALIDATION_RESOURCE_ACCESS_DENIED {
             get {
                 return ResourceManager.GetString("VALIDATION_RESOURCE_ACCESS_DENIED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Title must be at most 250 characters..
+        /// </summary>
+        public static string VALIDATION_TITLE_MAX_LENGTH {
+            get {
+                return ResourceManager.GetString("VALIDATION_TITLE_MAX_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Title is required..
+        /// </summary>
+        public static string VALIDATION_TITLE_REQUIRED {
+            get {
+                return ResourceManager.GetString("VALIDATION_TITLE_REQUIRED", resourceCulture);
             }
         }
     }

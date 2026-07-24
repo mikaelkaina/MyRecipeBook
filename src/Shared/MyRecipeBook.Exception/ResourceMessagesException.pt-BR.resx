@@ -123,8 +123,20 @@
   <data name="VALIDATION_ACCESS_TOKEN_REQUIRED" xml:space="preserve">
     <value>O token é obrigatório.</value>
   </data>
+  <data name="VALIDATION_AT_LEAST_ONE_INGREDIENT" xml:space="preserve">
+    <value>Você deve adicionar pelo menos um ingrediente.</value>
+  </data>
+  <data name="VALIDATION_AT_LEAST_ONE_INSTRUCTION" xml:space="preserve">
+    <value>Você deve adicionar pelo menos uma instrução.</value>
+  </data>
+  <data name="VALIDATION_COOK_TIME_INVALID" xml:space="preserve">
+    <value>O tempo de preparo selecionado é inválido.</value>
+  </data>
   <data name="VALIDATION_CURRENT_PASSWORD" xml:space="preserve">
     <value>A senha atual informada está incorreta.</value>
+  </data>
+  <data name="VALIDATION_DISH_TYPE_INVALID" xml:space="preserve">
+    <value>Um dos tipos de prato selecionados não válido.</value>
   </data>
   <data name="VALIDATION_EMAIL_ALREADY_EXISTS" xml:space="preserve">
     <value>Este e-mail já está em uso</value>
@@ -134,6 +146,21 @@
   </data>
   <data name="VALIDATION_EMAIL_REQUIRED" xml:space="preserve">
     <value>O e-mail é obrigatório.</value>
+  </data>
+  <data name="VALIDATION_INGREDIENT_EMPTY" xml:space="preserve">
+    <value>O ingrediente não pode ser vazio.</value>
+  </data>
+  <data name="VALIDATION_INGREDIENT_MAX_LENGTH" xml:space="preserve">
+    <value>O ingrediente deve ter no máximo 250 caracteres.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_DESCRIPTION_MAX_LENGTH" xml:space="preserve">
+    <value>A descrição da instrução deve ter no máximo 2.000 caracteres.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED" xml:space="preserve">
+    <value>A descrição da instrução é obrigatória.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_ORDER_INVALID" xml:space="preserve">
+    <value>A ordem da instrução deve ser maior que 0.</value>
   </data>
   <data name="VALIDATION_LOGIN_INVALID" xml:space="preserve">
     <value>E-mail ou senha inválidos.</value>
@@ -149,5 +176,11 @@
   </data>
   <data name="VALIDATION_RESOURCE_ACCESS_DENIED" xml:space="preserve">
     <value>Você não tem acesso a este recurso.</value>
+  </data>
+  <data name="VALIDATION_TITLE_MAX_LENGTH" xml:space="preserve">
+    <value>O título deve ter no máximo 250 caracteres.</value>
+  </data>
+  <data name="VALIDATION_TITLE_REQUIRED" xml:space="preserve">
+    <value>O título é obrigatório.</value>
   </data>
 </root>
