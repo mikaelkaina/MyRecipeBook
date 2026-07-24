@@ -129,6 +129,9 @@
   <data name="VALIDATION_AT_LEAST_ONE_INSTRUCTION" xml:space="preserve">
     <value>You must add at least one instruction.</value>
   </data>
+  <data name="VALIDATION_AT_LESAT_ONE_DISH_TYPE" xml:space="preserve">
+    <value>Add at least one dish.</value>
+  </data>
   <data name="VALIDATION_COOK_TIME_INVALID" xml:space="preserve">
     <value>The selected preparation time is invalid.</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED" xml:space="preserve">
     <value>The instruction description is mandatory.</value>
+  </data>
+  <data name="VALIDATION_INSTRUCTION_ORDER_DUPLICATED" xml:space="preserve">
+    <value>The order of the instructions cannot be duplicated.</value>
   </data>
   <data name="VALIDATION_INSTRUCTION_ORDER_INVALID" xml:space="preserve">
     <value>The instruction order must be greater than 0.</value>
