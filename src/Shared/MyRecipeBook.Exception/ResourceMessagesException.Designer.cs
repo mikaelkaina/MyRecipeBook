@@ -97,6 +97,15 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Add at least one dish..
+        /// </summary>
+        public static string VALIDATION_AT_LESAT_ONE_DISH_TYPE {
+            get {
+                return ResourceManager.GetString("VALIDATION_AT_LESAT_ONE_DISH_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a The selected preparation time is invalid..
         /// </summary>
         public static string VALIDATION_COOK_TIME_INVALID {
@@ -183,6 +192,15 @@ namespace MyRecipeBook.Exception {
         public static string VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED {
             get {
                 return ResourceManager.GetString("VALIDATION_INSTRUCTION_DESCRIPTION_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a The order of the instructions cannot be duplicated..
+        /// </summary>
+        public static string VALIDATION_INSTRUCTION_ORDER_DUPLICATED {
+            get {
+                return ResourceManager.GetString("VALIDATION_INSTRUCTION_ORDER_DUPLICATED", resourceCulture);
             }
         }
         
