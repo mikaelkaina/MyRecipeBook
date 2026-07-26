@@ -12,7 +12,6 @@ using WebApi.Tests.Resource;
 
 namespace WebApi.Tests.User.Login.WithEmailAndPassword;
 
-
 public class LoginWithEmailAndPasswordTests : IClassFixture<CustomWebApplicationFactory>
 {
     private const string REQUEST_URI = "/api/authentication";
