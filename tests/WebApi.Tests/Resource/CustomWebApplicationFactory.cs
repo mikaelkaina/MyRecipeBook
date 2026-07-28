@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MyRecipeBook.Infrastructure.DataAcess;
+using MyRecipeBook.Infrastructure.DataAccess;
 
 namespace WebApi.Tests.Resource;
 

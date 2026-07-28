@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MyRecipeBook.Infrastructure.DataAcess;
+using MyRecipeBook.Infrastructure.DataAccess;
 
 #nullable disable
 

@@ -1,7 +1,7 @@
 ﻿using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Repositories.Recipe;
 
-namespace MyRecipeBook.Infrastructure.DataAcess.Repositories;
+namespace MyRecipeBook.Infrastructure.DataAccess.Repositories;
 
 internal sealed class RecipeRepository : IRecipeWriteOnlyRepository
 {
