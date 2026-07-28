@@ -29,8 +29,11 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
         
         var recipe = request.Adapt<Domain.Entities.Recipe>();
         recipe.UserId = _loggedUser.GetUserId();
+        
         await _recipeWriteOnlyRepository.Add(recipe);
+        
         await _unitOfWork.Commit();
+        
         return new ResponseRegiteredRecipeJson
         {
             Id = recipe.Id,
