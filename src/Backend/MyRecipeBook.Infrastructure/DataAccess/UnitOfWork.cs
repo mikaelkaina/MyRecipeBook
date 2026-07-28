@@ -1,6 +1,6 @@
 ﻿using MyRecipeBook.Domain.Repositories;
 
-namespace MyRecipeBook.Infrastructure.DataAcess;
+namespace MyRecipeBook.Infrastructure.DataAccess;
 
 internal class UnitOfWork : IUnitOfWork
 {

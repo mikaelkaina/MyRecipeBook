@@ -3,7 +3,7 @@ using Microsoft.IdentityModel.JsonWebTokens;
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Identity;
 using MyRecipeBook.Domain.Security.Tokens;
-using MyRecipeBook.Infrastructure.DataAcess;
+using MyRecipeBook.Infrastructure.DataAccess;
 
 namespace MyRecipeBook.Infrastructure.Identity;
 

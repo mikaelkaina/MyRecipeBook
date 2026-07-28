@@ -2,7 +2,7 @@
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Repositories.User;
 
-namespace MyRecipeBook.Infrastructure.DataAcess.Repositories;
+namespace MyRecipeBook.Infrastructure.DataAccess.Repositories;
 
 internal sealed class UserRepository : IUserWriteOnlyRepository, IUserReadOnlyRepository, IUserUpdateOnlyRepository
 {

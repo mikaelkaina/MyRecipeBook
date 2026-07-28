@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Runtime.CompilerServices;
+using Microsoft.EntityFrameworkCore;
 using MyRecipeBook.Domain.Entities;
-using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("WebApi.Tests")]
-namespace MyRecipeBook.Infrastructure.DataAcess;
+namespace MyRecipeBook.Infrastructure.DataAccess;
 
 internal class MyRecipeBookDbContext : DbContext
 {
