@@ -22,7 +22,8 @@ internal class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 
         builder.Property(r => r.CookTime)
             .IsRequired()
-            .HasConversion<int>();
+            .HasConversion<string>()
+            .HasMaxLength(50);
 
         builder.HasOne<User>()
             .WithMany()
