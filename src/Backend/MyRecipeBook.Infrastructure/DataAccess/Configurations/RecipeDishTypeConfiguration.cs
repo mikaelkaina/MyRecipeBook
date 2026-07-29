@@ -18,7 +18,8 @@ internal class RecipeDishTypeConfiguration : IEntityTypeConfiguration<RecipeDish
 
         builder.Property(dt => dt.Type)
             .IsRequired()
-            .HasConversion<int>();
+            .HasConversion<string>()
+            .HasMaxLength(50);
 
         builder.HasOne<Recipe>()
             .WithMany(r => r.DishTypes)
