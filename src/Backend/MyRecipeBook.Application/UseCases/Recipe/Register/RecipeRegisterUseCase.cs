@@ -22,7 +22,7 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
         _unitOfWork = unitOfWork;
     }
     
-    public async  Task<ResponseRegiteredRecipeJson> Execute(RequestRecipeJson request)
+    public async Task<ResponseRegiteredRecipeJson> Execute(RequestRecipeJson request)
     {
         Validate(request);
         
@@ -45,6 +45,6 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
         var result = new RecipeValidator().Validate(request);
 
         if (result.IsValid == false)
-            throw new ErrorOnValidationException(result.Errors.Select(error => error.ErrorMessage).ToList());
+            throw new ErrorOnValidationException([.. result.Errors.Select(error => error.ErrorMessage)]);
     }
 }

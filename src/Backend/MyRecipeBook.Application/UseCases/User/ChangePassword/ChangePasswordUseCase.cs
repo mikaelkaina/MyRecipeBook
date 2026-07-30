@@ -32,7 +32,7 @@ public class ChangePasswordUseCase : IChangePasswordUseCase
 
         await _userUpdateOnlyRepository.UpdatePassword(loggedUser.Id, hashedPassword);
     }
-    //
+
     private void Validate(RequestChangePasswordJson request, Domain.Entities.User loggedUser)
     {
         var result = new ChangePasswordValidator().Validate(request);
@@ -41,6 +41,6 @@ public class ChangePasswordUseCase : IChangePasswordUseCase
             result.Errors.Add(new ValidationFailure(string.Empty, ResourceMessagesException.VALIDATION_CURRENT_PASSWORD));
 
         if(result.IsValid == false)
-            throw new ErrorOnValidationException(result.Errors.Select(e => e.ErrorMessage).ToList());
+            throw new ErrorOnValidationException([.. result.Errors.Select(e => e.ErrorMessage)]);
     }
 }
