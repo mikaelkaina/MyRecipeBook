@@ -1,7 +1,9 @@
 ﻿using Mapster;
 using MyRecipeBook.Communication.Requets;
 using MyRecipeBook.Domain.Entities;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("UseCase.Tests")]
 namespace MyRecipeBook.Application.Mappings;
 
 internal static class MapsterConfiguration
