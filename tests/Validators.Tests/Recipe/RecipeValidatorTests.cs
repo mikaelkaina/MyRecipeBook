@@ -5,7 +5,7 @@ using MyRecipeBook.Communication.Requets;
 using MyRecipeBook.Exception;
 using Shouldly;
 
-namespace Validators.Tests.User.Recipe;
+namespace Validators.Tests.Recipe;
 
 public class RecipeValidatorTests
 {
