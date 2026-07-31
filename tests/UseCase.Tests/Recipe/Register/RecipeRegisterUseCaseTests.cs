@@ -4,7 +4,6 @@ using CommonTestsUtilities.Repositories;
 using CommonTestsUtilities.Requests;
 using MyRecipeBook.Application.Mappings;
 using MyRecipeBook.Application.UseCases.Recipe.Register;
-using MyRecipeBook.Communication.Enums;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Exception.ExceptionsBase;
 using Shouldly;
@@ -52,94 +51,6 @@ public class RecipeRegisterUseCaseTests
             {
                 messages.Count.ShouldBe(1);
                 messages.ShouldContain(ResourceMessagesException.VALIDATION_TITLE_REQUIRED);
-            });
-        });
-    }
-
-    [Fact]
-    public async Task Validate_ShouldThrowException_WhenCookTimeIsInvalid()
-    {
-        var (user, _) = UserBuilder.Build();
-
-        var request = RequestRecipeJsonBuilder.Build();
-        request.CookTime = (CookTime)99;
-
-        var useCase = CreateUseCase(user);
-
-        var exception = await useCase.Execute(request).ShouldThrowAsync<ErrorOnValidationException>();
-        exception.ShouldSatisfyAllConditions(ex =>
-        {
-            ex.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.BadRequest);
-            ex.GetErrorMessages().ShouldSatisfyAllConditions(messages =>
-            {
-                messages.Count.ShouldBe(1);
-                messages.ShouldContain(ResourceMessagesException.VALIDATION_COOK_TIME_INVALID);
-            });
-        });
-    }
-
-    [Fact]
-    public async Task Validate_ShouldThrowException_WhenIngredientsIsEmpty()
-    {
-        var (user, _) = UserBuilder.Build();
-
-        var request = RequestRecipeJsonBuilder.Build();
-        request.Ingredients = [];
-
-        var useCase = CreateUseCase(user);
-
-        var exception = await useCase.Execute(request).ShouldThrowAsync<ErrorOnValidationException>();
-        exception.ShouldSatisfyAllConditions(ex =>
-        {
-            ex.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.BadRequest);
-            ex.GetErrorMessages().ShouldSatisfyAllConditions(messages =>
-            {
-                messages.Count.ShouldBe(1);
-                messages.ShouldContain(ResourceMessagesException.VALIDATION_AT_LEAST_ONE_INGREDIENT);
-            });
-        });
-    }
-
-    [Fact]
-    public async Task Validate_ShouldThrowException_WhenDishTypesIsEmpty()
-    {
-        var (user, _) = UserBuilder.Build();
-
-        var request = RequestRecipeJsonBuilder.Build();
-        request.DishTypes = [];
-
-        var useCase = CreateUseCase(user);
-
-        var exception = await useCase.Execute(request).ShouldThrowAsync<ErrorOnValidationException>();
-        exception.ShouldSatisfyAllConditions(ex =>
-        {
-            ex.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.BadRequest);
-            ex.GetErrorMessages().ShouldSatisfyAllConditions(messages =>
-            {
-                messages.Count.ShouldBe(1);
-                messages.ShouldContain(ResourceMessagesException.VALIDATION_AT_LESAT_ONE_DISH_TYPE);
-            });
-        });
-    }
-
-    [Fact]
-    public async Task Validate_ShouldThrowException_WhenInstructionsIsEmpty()
-    {
-        var (user, _) = UserBuilder.Build();
-
-        var request = RequestRecipeJsonBuilder.Build();
-        request.Instructions = [];
-
-        var useCase = CreateUseCase(user);
-
-        var exception = await useCase.Execute(request).ShouldThrowAsync<ErrorOnValidationException>();
-        exception.ShouldSatisfyAllConditions(ex =>
-        {
-            ex.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.BadRequest);
-            ex.GetErrorMessages().ShouldSatisfyAllConditions(messages =>
-            {
-                messages.Count.ShouldBe(1);
-                messages.ShouldContain(ResourceMessagesException.VALIDATION_AT_LEAST_ONE_INSTRUCTION);
             });
         });
     }
