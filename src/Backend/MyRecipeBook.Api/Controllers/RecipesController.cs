@@ -21,4 +21,12 @@ public class RecipesController : ControllerBase
 
         return Created(string.Empty, result);
     }
+
+    [HttpGet("{id}")]
+    [ProducesResponseType(typeof(ResponseRegiteredRecipeJson), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById([FromRoute] Guid id)
+    {
+        return Ok();
+    }
 }

@@ -180,6 +180,9 @@
   <data name="VALIDATION_PASSWORD_REQUIRED" xml:space="preserve">
     <value>Password is required</value>
   </data>
+  <data name="VALIDATION_RECIPE_NOT_FOUND" xml:space="preserve">
+    <value>We couldn't find this recipe.</value>
+  </data>
   <data name="VALIDATION_RESOURCE_ACCESS_DENIED" xml:space="preserve">
     <value>You do not have access to this feature.</value>
   </data>
