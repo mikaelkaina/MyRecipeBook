@@ -20,7 +20,6 @@ public static class DependencyInjection
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IPasswordHasher, Argon2PasswordHasher>();
-
         services.AddScoped<ILoggedUser, LoggedUser>();
 
         services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
@@ -28,6 +27,7 @@ public static class DependencyInjection
         services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
         
         services.AddScoped<IRecipeWriteOnlyRepository,  RecipeRepository>();
+        services.AddScoped<IRecipeReadOnlyRepository, RecipeRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 

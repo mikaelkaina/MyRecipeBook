@@ -250,6 +250,15 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a We couldn&apos;t find this recipe..
+        /// </summary>
+        public static string VALIDATION_RECIPE_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("VALIDATION_RECIPE_NOT_FOUND", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a You do not have access to this feature..
         /// </summary>
         public static string VALIDATION_RESOURCE_ACCESS_DENIED {
