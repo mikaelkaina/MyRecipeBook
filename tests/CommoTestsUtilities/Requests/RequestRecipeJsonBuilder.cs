@@ -13,12 +13,12 @@ public class RequestRecipeJsonBuilder
         return new Faker<RequestRecipeJson>()
             .RuleFor(r => r.Title, f => f.Lorem.Word())
             .RuleFor(r => r.CookTime, f => f.PickRandom<CookTime>())
-            .RuleFor(r => r.DishTypes, f => f.Make(1, () => f.PickRandom<DishType>()).ToList())
-            .RuleFor(r => r.Ingredients, f => [.. f.Make(3, () => f.Commerce.ProductName())])
+            .RuleFor(r => r.Ingredients, f => f.Make(3, () => f.Commerce.ProductName()))
+            .RuleFor(r => r.DishTypes, f => f.Make(2, () => f.PickRandom<DishType>()).Distinct().ToList())
             .RuleFor(r => r.Instructions, f => f.Make(3, () => new RequestRecipeInstructionJson
             {
                 Order = instructionOrder++,
                 Description = f.Lorem.Sentence()
-            }).ToList());
+            }));
     }
 }
