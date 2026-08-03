@@ -10,6 +10,7 @@ public class NotFoundException : MyRecipeBookException
     {
         _message = message;
     }
+
     public override List<string> GetErrorMessages() => [_message];
 
     public override HttpStatusCode GetStatusCode() => HttpStatusCode.NotFound;
