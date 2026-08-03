@@ -4,7 +4,7 @@ using MyRecipeBook.Domain.Identity;
 
 namespace CommonTestsUtilities.Identity;
 
-public class ILoggedUderBuilder
+public class ILoggedUserBuilder
 {
     public static ILoggedUser Build(User user)
     {

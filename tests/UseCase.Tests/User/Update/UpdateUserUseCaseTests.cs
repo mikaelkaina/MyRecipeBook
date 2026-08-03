@@ -80,7 +80,7 @@ public class UpdateUserUseCaseTests
     {
         var unitOfWork = IUnitOfWorkBuilder.Build();
         var userUpdateRepositoryBuilder = IUserUpdateOnlyRepositoryBuilder.Build();
-        var loggedUser = ILoggedUderBuilder.Build(user);
+        var loggedUser = ILoggedUserBuilder.Build(user);
 
         var userReadOnlyRepositoryBuilder = new IUserReadOnlyRepositoryBuilder();
         if (emailThatAlreadyExists.IsNotEmpty())
