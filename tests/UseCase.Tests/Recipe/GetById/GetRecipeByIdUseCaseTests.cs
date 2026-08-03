@@ -58,7 +58,7 @@ public class GetRecipeByIdUseCaseTests
         if (recipe is not null)
             repositoryBuilder.GetById(user, recipe);
 
-        var loggedUser = ILoggedUderBuilder.Build(user);
+        var loggedUser = ILoggedUserBuilder.Build(user);
 
         return new GetRecipeByIdUseCase(repositoryBuilder.Build(), loggedUser);
     }

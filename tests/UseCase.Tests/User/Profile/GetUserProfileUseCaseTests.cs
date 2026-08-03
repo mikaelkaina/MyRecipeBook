@@ -23,7 +23,7 @@ public class GetUserProfileUseCaseTests
 
     private static GetUserProfileUseCase CreateUseCase(MyRecipeBook.Domain.Entities.User user)
     {
-        var loggedUser = ILoggedUderBuilder.Build(user);
+        var loggedUser = ILoggedUserBuilder.Build(user);
         return new GetUserProfileUseCase(loggedUser);
     }
 }

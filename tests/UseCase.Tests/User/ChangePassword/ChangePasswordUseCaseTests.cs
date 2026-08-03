@@ -75,7 +75,7 @@ public class ChangePasswordUseCaseTests
     private ChangePasswordUseCase CreateUseCase(MyRecipeBook.Domain.Entities.User user, string password)
     {
         var userUpdateRepositoryBuilder = IUserUpdateOnlyRepositoryBuilder.Build();
-        var loggedUser = ILoggedUderBuilder.Build(user);
+        var loggedUser = ILoggedUserBuilder.Build(user);
         var passwordHasher = new IPasswordHasherBuilder().VerifyPassword(password).Build();
 
         return new ChangePasswordUseCase(passwordHasher, loggedUser, userUpdateRepositoryBuilder);
