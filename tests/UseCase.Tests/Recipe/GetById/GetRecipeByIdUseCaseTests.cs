@@ -22,7 +22,7 @@ public class GetRecipeByIdUseCaseTests
         var (user, _) = UserBuilder.Build();
         var recipe = RecipeBuilder.Build(user);
 
-        var useCase = CreateUseCase(user, recipe);
+        var useCase = CreateUseCase(recipe, user);
 
         var result = await useCase.Execute(recipe.Id);
 
@@ -35,10 +35,11 @@ public class GetRecipeByIdUseCaseTests
     public async Task Validate_ShouldThrowException_WhenRecipeNotFound()
     {
         var (user, _) = UserBuilder.Build();
+        var recipe = RecipeBuilder.Build(user);
 
-        var useCase = CreateUseCase(user);
+        var useCase = CreateUseCase(recipe, user);
 
-        var exception = await useCase.Execute(Guid.NewGuid()).ShouldThrowAsync<NotFoundException>();
+        var exception = await useCase.Execute(Guid.CreateVersion7()).ShouldThrowAsync<NotFoundException>();
         exception.ShouldSatisfyAllConditions(ex =>
         {
             ex.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.NotFound);
@@ -50,16 +51,13 @@ public class GetRecipeByIdUseCaseTests
         });
     }
 
-    private GetRecipeByIdUseCase CreateUseCase(MyRecipeBook.Domain.Entities.User user,
-        MyRecipeBook.Domain.Entities.Recipe? recipe = null)
+    private GetRecipeByIdUseCase CreateUseCase(MyRecipeBook.Domain.Entities.Recipe recipe,
+        MyRecipeBook.Domain.Entities.User user)
     {
-        var repositoryBuilder = new IRecipeReadOnlyRepositoryBuilder();
-
-        if (recipe is not null)
-            repositoryBuilder.GetById(user, recipe);
+        var repository = new IRecipeReadOnlyRepositoryBuilder().GetById(recipe).Build();
 
         var loggedUser = ILoggedUserBuilder.Build(user);
 
-        return new GetRecipeByIdUseCase(repositoryBuilder.Build(), loggedUser);
+        return new GetRecipeByIdUseCase(repository, loggedUser);
     }
 }

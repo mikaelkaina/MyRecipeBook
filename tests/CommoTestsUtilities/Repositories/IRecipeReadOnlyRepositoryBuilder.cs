@@ -8,9 +8,9 @@ public class IRecipeReadOnlyRepositoryBuilder
 {
     private readonly Mock<IRecipeReadOnlyRepository> _mock = new();
 
-    public IRecipeReadOnlyRepositoryBuilder GetById(User user, Recipe recipe)
+    public IRecipeReadOnlyRepositoryBuilder GetById(Recipe recipe)
     {
-        _mock.Setup(r => r.GetById(recipe.Id, user.Id)).ReturnsAsync(recipe);
+        _mock.Setup(repository => repository.GetById(recipe.Id, recipe.UserId)).ReturnsAsync(recipe);
         return this;
     }
 
