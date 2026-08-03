@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 using MyRecipeBook.Application.UseCases.Shared.Validators;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.User;
 
 namespace MyRecipeBook.Application.UseCases.User.ChangePassword;
 

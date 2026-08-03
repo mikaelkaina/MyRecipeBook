@@ -1,5 +1,5 @@
 ﻿using FluentValidation.Results;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.User;
 using MyRecipeBook.Domain.Identity;
 using MyRecipeBook.Domain.Repositories.User;
 using MyRecipeBook.Domain.Security.PasswordHashing;

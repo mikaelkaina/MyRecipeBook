@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyRecipeBook.Application.UseCases.Recipe.GetById;
 using MyRecipeBook.Application.UseCases.Recipe.Register;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Communication.Responses;
 
 namespace MyRecipeBook.Api.Controllers;

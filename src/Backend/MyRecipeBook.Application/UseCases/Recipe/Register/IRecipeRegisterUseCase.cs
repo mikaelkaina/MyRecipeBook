@@ -1,4 +1,4 @@
-﻿using MyRecipeBook.Communication.Requets;
+﻿using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Communication.Responses;
 
 namespace MyRecipeBook.Application.UseCases.Recipe.Register;

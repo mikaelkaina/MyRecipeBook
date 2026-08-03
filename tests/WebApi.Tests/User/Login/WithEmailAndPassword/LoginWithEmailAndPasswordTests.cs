@@ -1,6 +1,6 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Requests;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.User;
 using MyRecipeBook.Exception;
 using Shouldly;
 using System.Globalization;

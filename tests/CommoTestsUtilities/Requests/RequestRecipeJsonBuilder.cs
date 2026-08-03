@@ -1,6 +1,6 @@
 ﻿using Bogus;
 using MyRecipeBook.Communication.Enums;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.Recipe;
 
 namespace CommonTestsUtilities.Requests;
 

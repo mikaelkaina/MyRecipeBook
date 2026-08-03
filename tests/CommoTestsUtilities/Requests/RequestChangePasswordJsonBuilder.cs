@@ -1,5 +1,5 @@
 ﻿using Bogus;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.User;
 
 namespace CommonTestsUtilities.Requests;
 

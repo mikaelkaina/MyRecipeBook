@@ -4,7 +4,7 @@ using CommonTestsUtilities.Repositories;
 using CommonTestsUtilities.Requests;
 using CommonTestsUtilities.Secutiry;
 using MyRecipeBook.Application.UseCases.User.ChangePassword;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.User;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Exception.ExceptionsBase;
 using Shouldly;

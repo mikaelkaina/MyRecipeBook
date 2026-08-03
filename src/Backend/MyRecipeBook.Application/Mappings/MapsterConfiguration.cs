@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Communication.Responses;
 using MyRecipeBook.Domain.Entities;
 using System.Runtime.CompilerServices;
