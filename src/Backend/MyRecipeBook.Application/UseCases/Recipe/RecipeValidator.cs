@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Exception;
 
 namespace MyRecipeBook.Application.UseCases.Recipe;

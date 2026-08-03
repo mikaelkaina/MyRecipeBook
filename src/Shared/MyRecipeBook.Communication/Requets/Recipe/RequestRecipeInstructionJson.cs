@@ -1,4 +1,4 @@
-﻿namespace MyRecipeBook.Communication.Requets;
+﻿namespace MyRecipeBook.Communication.Requets.Recipe;
 
 public class RequestRecipeInstructionJson
 {

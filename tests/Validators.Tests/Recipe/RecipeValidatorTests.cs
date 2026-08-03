@@ -1,7 +1,7 @@
 ﻿using CommonTestsUtilities.Requests;
 using MyRecipeBook.Application.UseCases.Recipe;
 using MyRecipeBook.Communication.Enums;
-using MyRecipeBook.Communication.Requets;
+using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Exception;
 using Shouldly;
 
