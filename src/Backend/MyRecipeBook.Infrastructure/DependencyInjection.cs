@@ -28,6 +28,7 @@ public static class DependencyInjection
         
         services.AddScoped<IRecipeWriteOnlyRepository,  RecipeRepository>();
         services.AddScoped<IRecipeReadOnlyRepository, RecipeRepository>();
+        services.AddScoped<IRecipeUpdateOnlyRepository, RecipeRepository>();
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 

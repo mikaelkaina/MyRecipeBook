@@ -1,0 +1,40 @@
+﻿using MyRecipeBook.Communication.Requets.Recipe;
+using MyRecipeBook.Domain.Identity;
+using MyRecipeBook.Domain.Repositories;
+using MyRecipeBook.Domain.Repositories.Recipe;
+using MyRecipeBook.Exception;
+using MyRecipeBook.Exception.ExceptionsBase;
+
+namespace MyRecipeBook.Application.UseCases.Recipe.UpdateById;
+
+public class RecipeUpdateByIdUseCase : IRecipeUpdateByIdUseCase
+{
+    private readonly IRecipeUpdateOnlyRepository repository;
+    private readonly ILoggedUser _loggedUser;
+    private readonly IUnitOfWork _unitOfWork;
+
+    public RecipeUpdateByIdUseCase(IRecipeUpdateOnlyRepository repository, 
+        ILoggedUser loggedUser, IUnitOfWork unitOfWork)
+    {
+        this.repository = repository;
+        _loggedUser = loggedUser;
+        _unitOfWork = unitOfWork;
+    }
+    public async Task Execute(Guid recipeId, RequestRecipeJson request)
+    {
+        Validate(request);
+
+        var recipe = await repository.GetById(recipeId, _loggedUser.GetUserId());
+        if(recipe is null)
+            throw new NotFoundException(ResourceMessagesException.VALIDATION_RECIPE_NOT_FOUND);
+
+        await _unitOfWork.Commit();
+    }
+
+    private void Validate(RequestRecipeJson request)
+    {
+        var result = new RecipeValidator().Validate(request);
+        if (result.IsValid == false)
+            throw new ErrorOnValidationException(result.Errors.Select(error => error.ErrorMessage).ToList());
+    }
+}

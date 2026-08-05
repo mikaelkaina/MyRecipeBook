@@ -5,6 +5,7 @@ using MyRecipeBook.Exception;
 using Shouldly;
 using System.Globalization;
 using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 using WebApi.Tests.InLineData;
@@ -39,7 +40,7 @@ public class RecipeRegisterTests : IClassFixture<CustomWebApplicationFactory>
             _factory.GetJwtExpirationTimeMinutes());
 
         _httpClient.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            new AuthenticationHeaderValue("Bearer", token);
 
         var request = RequestRecipeJsonBuilder.Build();
 
@@ -70,7 +71,7 @@ public class RecipeRegisterTests : IClassFixture<CustomWebApplicationFactory>
             _factory.GetJwtExpirationTimeMinutes());
 
         _httpClient.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+            new AuthenticationHeaderValue("Bearer", token);
 
         _httpClient.DefaultRequestHeaders.AcceptLanguage.Clear();
         _httpClient.DefaultRequestHeaders.AcceptLanguage.ParseAdd(culture);
