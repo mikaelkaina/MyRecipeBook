@@ -17,11 +17,16 @@ internal class MyRecipeBookDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(MyRecipeBookDbContext).Assembly);
 
-        modelBuilder.Entity<RecipeIngredient>().ToTable("RecipeIngredients");
-        modelBuilder.Entity<RecipeInstruction>().ToTable("RecipeInstructions");
+        modelBuilder.Entity<RecipeIngredient>().ToTable("RecipeIngredients")
+            .Property(ingredient => ingredient.Id).ValueGeneratedNever();
+
+        modelBuilder.Entity<RecipeInstruction>().ToTable("RecipeInstructions")
+            .Property(instruction => instruction.Id).ValueGeneratedNever();
 
         modelBuilder.Entity<RecipeDishType>().ToTable("RecipeDishTypes")
             .Property(dishType => dishType.Type).HasConversion<string>();
+
+        modelBuilder.Entity<RecipeDishType>().Property(dishType => dishType.Id).ValueGeneratedNever();
 
         modelBuilder.Entity<Recipe>().Property(recipe => recipe.CookTime).HasConversion<string>();
     }
