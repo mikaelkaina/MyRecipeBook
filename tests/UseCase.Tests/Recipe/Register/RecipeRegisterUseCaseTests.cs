@@ -57,7 +57,7 @@ public class RecipeRegisterUseCaseTests
 
     private RecipeRegisterUseCase CreateUseCase(MyRecipeBook.Domain.Entities.User user)
     {
-        var recipeWriteOnlyRepository = IRecipeWriteOnlyRepositoryBuilder.Build();
+        var recipeWriteOnlyRepository = new IRecipeWriteOnlyRepositoryBuilder().Build();
         var loggedUser = ILoggedUserBuilder.Build(user);
         var unitOfWork = IUnitOfWorkBuilder.Build();
 
