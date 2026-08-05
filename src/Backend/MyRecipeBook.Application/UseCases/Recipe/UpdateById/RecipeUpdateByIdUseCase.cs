@@ -10,14 +10,14 @@ namespace MyRecipeBook.Application.UseCases.Recipe.UpdateById;
 
 public class RecipeUpdateByIdUseCase : IRecipeUpdateByIdUseCase
 {
-    private readonly IRecipeUpdateOnlyRepository repository;
+    private readonly IRecipeUpdateOnlyRepository _repository;
     private readonly ILoggedUser _loggedUser;
     private readonly IUnitOfWork _unitOfWork;
 
     public RecipeUpdateByIdUseCase(IRecipeUpdateOnlyRepository repository, 
         ILoggedUser loggedUser, IUnitOfWork unitOfWork)
     {
-        this.repository = repository;
+        _repository = repository;
         _loggedUser = loggedUser;
         _unitOfWork = unitOfWork;
     }
@@ -25,7 +25,7 @@ public class RecipeUpdateByIdUseCase : IRecipeUpdateByIdUseCase
     {
         Validate(request);
 
-        var recipe = await repository.GetById(recipeId, _loggedUser.GetUserId());
+        var recipe = await _repository.GetById(recipeId, _loggedUser.GetUserId());
         if(recipe is null)
             throw new NotFoundException(ResourceMessagesException.VALIDATION_RECIPE_NOT_FOUND);
 
