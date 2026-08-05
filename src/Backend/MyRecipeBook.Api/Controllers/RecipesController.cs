@@ -20,7 +20,6 @@ public class RecipesController : ControllerBase
         [FromBody] RequestRecipeJson request)
     {
         var result = await useCase.Execute(request);
-
         return Created(string.Empty, result);
     }
 
@@ -39,7 +38,6 @@ public class RecipesController : ControllerBase
     public async Task<IActionResult> DeleteById([FromRoute] Guid id, [FromServices] IDeleteRecipeByIdUseCase useCase)
     {
         await  useCase.Execute(id);
-        
         return NoContent();
     }
 }
