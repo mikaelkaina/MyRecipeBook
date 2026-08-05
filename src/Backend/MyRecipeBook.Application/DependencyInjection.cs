@@ -4,6 +4,7 @@ using MyRecipeBook.Application.UseCases.Login.WithEmailAndPassword;
 using MyRecipeBook.Application.UseCases.Recipe.DeleteById;
 using MyRecipeBook.Application.UseCases.Recipe.GetById;
 using MyRecipeBook.Application.UseCases.Recipe.Register;
+using MyRecipeBook.Application.UseCases.Recipe.UpdateById;
 using MyRecipeBook.Application.UseCases.User.ChangePassword;
 using MyRecipeBook.Application.UseCases.User.Profile;
 using MyRecipeBook.Application.UseCases.User.Register;
@@ -26,5 +27,6 @@ public static class DependencyInjection
         services.AddScoped<IRecipeRegisterUseCase,  RecipeRegisterUseCase>();
         services.AddScoped<IGetRecipeByIdUseCase, GetRecipeByIdUseCase>();
         services.AddScoped<IDeleteRecipeByIdUseCase,  DeleteRecipeByIdUseCase>();
+        services.AddScoped<IRecipeUpdateByIdUseCase, RecipeUpdateByIdUseCase>();
     }
 }
