@@ -14,5 +14,11 @@ public class IRecipeReadOnlyRepositoryBuilder
         return this;
     }
 
+    public IRecipeReadOnlyRepositoryBuilder GetRecentRecipes(User user, List<Recipe> recipes)
+    {
+        _mock.Setup(r => r.GetRecentRecipes(user.Id)).ReturnsAsync(recipes);
+        return this;
+    }
+
     public IRecipeReadOnlyRepository Build() => _mock.Object;
 }
