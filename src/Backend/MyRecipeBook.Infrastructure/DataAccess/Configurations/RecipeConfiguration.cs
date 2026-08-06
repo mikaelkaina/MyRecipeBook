@@ -24,6 +24,10 @@ internal class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
             .IsRequired()
             .HasConversion<string>()
             .HasMaxLength(50);
+        
+        builder.Property(r => r.CreatedAt)
+            .IsRequired()
+            .HasDefaultValueSql("GETUTCDATE()");
 
         builder.HasOne<User>()
             .WithMany()
