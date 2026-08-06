@@ -50,11 +50,6 @@ public class RecipeUpdateByIdTests : IClassFixture<CustomWebApplicationFactory>
 
         response.StatusCode.ShouldBe(HttpStatusCode.NoContent);
     }
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="culture"></param>
-    /// <returns></returns>
 
     [Theory]
     [ClassData(typeof(CultureInLineData))]
