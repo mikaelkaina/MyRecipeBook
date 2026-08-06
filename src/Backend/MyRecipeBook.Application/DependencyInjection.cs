@@ -28,5 +28,6 @@ public static class DependencyInjection
         services.AddScoped<IGetRecipeByIdUseCase, GetRecipeByIdUseCase>();
         services.AddScoped<IDeleteRecipeByIdUseCase,  DeleteRecipeByIdUseCase>();
         services.AddScoped<IRecipeUpdateByIdUseCase, RecipeUpdateByIdUseCase>();
+        services.AddScoped<IGetRecipeByIdUseCase, GetRecipeByIdUseCase>();
     }
 }
