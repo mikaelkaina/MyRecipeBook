@@ -35,6 +35,17 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
             .FirstOrDefaultAsync(recipe => recipe.Active && recipe.Id == recipeId && recipe.UserId == userId);
     }
 
+    public async Task<List<Recipe>> GetRecentRecipes(Guid userId)
+    {
+        return await _dbContext
+            .Recipes
+            .AsNoTracking()
+            .Where(recipe => recipe.Active && recipe.UserId == userId)
+            .OrderByDescending(recipe => recipe.Id)
+            .Take(6)
+            .ToListAsync();
+    }
+
     async Task<Recipe?> IRecipeUpdateOnlyRepository.GetById(Guid recipeId, Guid userId)
     {
         return await GetFullRecipe()
