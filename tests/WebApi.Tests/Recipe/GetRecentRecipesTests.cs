@@ -7,6 +7,9 @@ using System.Text.Json;
 using WebApi.Tests.Resource;
 
 namespace WebApi.Tests.Recipe;
+/// <summary>
+/// 
+/// </summary>
 
 public class GetRecentRecipesTests : IClassFixture<CustomWebApplicationFactory>
 {
