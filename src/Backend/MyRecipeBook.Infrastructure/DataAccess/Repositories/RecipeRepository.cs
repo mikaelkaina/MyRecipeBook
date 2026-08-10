@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
+using MyRecipeBook.Domain.Dtos;
 using MyRecipeBook.Domain.Entities;
+using MyRecipeBook.Domain.Extensions;
 using MyRecipeBook.Domain.Repositories.Recipe;
 
 namespace MyRecipeBook.Infrastructure.DataAccess.Repositories;
@@ -46,9 +48,21 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
             .ToListAsync();
     }
 
-    public Task<IList<Recipe>> FilterRecipes(Guid userId)
+    public async Task<IList<Recipe>> FilterRecipes(Guid userId, RecipeFilterDto filter)
     {
-        throw new NotImplementedException();
+        var query = _dbContext
+            .Recipes
+            .AsNoTracking()
+            .Where(recipe => recipe.Active && recipe.UserId == userId);
+        
+        if(filter.CookTime is not null)
+            query = query.Where(recipe => recipe.CookTime == filter.CookTime);
+
+        if (filter.SearchTerm.IsNotEmpty())
+            query = query.Where(recipe => recipe.Title.Contains(filter.SearchTerm) 
+                                          || recipe.Ingredients.Any(i => i.Item.Contains(filter.SearchTerm)));
+        
+        return await query.ToListAsync();
     }
 
     async Task<Recipe?> IRecipeUpdateOnlyRepository.GetById(Guid recipeId, Guid userId)
