@@ -1,7 +1,6 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Identity;
 using CommonTestsUtilities.Repositories;
-using MyRecipeBook.Application.Mappings;
 using MyRecipeBook.Application.UseCases.Recipe.Recent;
 using Shouldly;
 
@@ -9,11 +8,6 @@ namespace UseCase.Tests.Recipe.Recent;
 
 public class GetRecentRecipesUseCaseTests
 {
-    static GetRecentRecipesUseCaseTests()
-    {
-        MapsterConfiguration.Configure();
-    }
-
     [Fact]
     public async Task Success()
     {
