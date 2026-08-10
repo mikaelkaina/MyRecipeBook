@@ -46,6 +46,11 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
             .ToListAsync();
     }
 
+    public Task<IList<Recipe>> FilterRecipes(Guid userId)
+    {
+        throw new NotImplementedException();
+    }
+
     async Task<Recipe?> IRecipeUpdateOnlyRepository.GetById(Guid recipeId, Guid userId)
     {
         return await GetFullRecipe()
