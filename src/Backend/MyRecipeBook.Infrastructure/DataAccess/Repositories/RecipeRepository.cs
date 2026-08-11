@@ -44,7 +44,7 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
             .AsNoTracking()
             .Where(recipe => recipe.Active && recipe.UserId == userId)
             .OrderByDescending(recipe => recipe.CreatedAt)
-            .Take(2)
+            .Take(4)
             .ToListAsync();
     }
 
@@ -59,8 +59,11 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
             query = query.Where(recipe => recipe.CookTime == filter.CookTime);
 
         if (filter.SearchTerm.IsNotEmpty())
-            query = query.Where(recipe => recipe.Title.Contains(filter.SearchTerm) 
-                                          || recipe.Ingredients.Any(i => i.Item.Contains(filter.SearchTerm)));
+            query = query.Where(recipe => recipe.Title.Contains(filter.SearchTerm)
+            || recipe.Ingredients.Any(i => i.Item.Contains(filter.SearchTerm)));
+
+        if (filter.DishTypes.Any())
+            query = query.Where(recipe => recipe.DishTypes.Any(dt => filter.DishTypes.Contains(dt.Type)));
         
         return await query.ToListAsync();
     }
