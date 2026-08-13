@@ -1,7 +1,6 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Identity;
 using CommonTestsUtilities.Repositories;
-using MyRecipeBook.Application.Mappings;
 using MyRecipeBook.Application.UseCases.Recipe.Filter;
 using Shouldly;
 
@@ -9,10 +8,6 @@ namespace UseCase.Tests.Recipe.Filter;
 
 public class FilterRecipesUseCaseTests
 {
-    static FilterRecipesUseCaseTests()
-    {
-        MapsterConfiguration.Configure();
-    }
 
     [Fact]
     public async Task Success()
