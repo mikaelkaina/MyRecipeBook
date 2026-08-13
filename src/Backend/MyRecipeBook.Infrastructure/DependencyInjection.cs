@@ -5,6 +5,7 @@ using MyRecipeBook.Domain.Identity;
 using MyRecipeBook.Domain.Repositories;
 using MyRecipeBook.Domain.Repositories.Recipe;
 using MyRecipeBook.Domain.Repositories.User;
+using MyRecipeBook.Domain.Repositories.VerificationCode;
 using MyRecipeBook.Domain.Security.PasswordHashing;
 using MyRecipeBook.Domain.Security.Tokens;
 using MyRecipeBook.Infrastructure.DataAccess;
@@ -25,6 +26,8 @@ public static class DependencyInjection
         services.AddScoped<IUserWriteOnlyRepository, UserRepository>();
         services.AddScoped<IUserReadOnlyRepository, UserRepository>();
         services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
+
+        services.AddScoped<IVerificationCodeWriteOnlyRepository, VerificationCodeRepository>();
         
         services.AddScoped<IRecipeWriteOnlyRepository,  RecipeRepository>();
         services.AddScoped<IRecipeReadOnlyRepository, RecipeRepository>();

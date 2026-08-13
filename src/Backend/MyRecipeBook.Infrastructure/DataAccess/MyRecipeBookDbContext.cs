@@ -13,6 +13,8 @@ internal class MyRecipeBookDbContext : DbContext
     
     public DbSet<Recipe> Recipes { get; set; }
 
+    public DbSet<VerificationCode> VerificationCodes { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(MyRecipeBookDbContext).Assembly);
@@ -29,5 +31,9 @@ internal class MyRecipeBookDbContext : DbContext
         modelBuilder.Entity<RecipeDishType>().Property(dishType => dishType.Id).ValueGeneratedNever();
 
         modelBuilder.Entity<Recipe>().Property(recipe => recipe.CookTime).HasConversion<string>();
+
+        modelBuilder.Entity<VerificationCode>().Property(code => code.Type).HasConversion<string>();
+
+        modelBuilder.Entity<VerificationCode>().HasOne<User>().WithMany().HasForeignKey(code => code.UserId);
     }
 }
