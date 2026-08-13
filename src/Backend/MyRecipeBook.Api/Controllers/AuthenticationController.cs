@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyRecipeBook.Application.UseCases.Login.WithEmailAndPassword;
+using MyRecipeBook.Application.UseCases.PasswordRecovery.RequestCode;
 using MyRecipeBook.Communication.Requets.User;
+using MyRecipeBook.Communication.Requets.VerificationCode;
 using MyRecipeBook.Communication.Responses;
 
 namespace MyRecipeBook.Api.Controllers;
@@ -19,5 +21,16 @@ public class AuthenticationController : ControllerBase
         var response = await usecase.Execute(request);
 
         return Ok(response);
+    }
+
+    [HttpPost("password-recovery")]
+    [ProducesResponseType( StatusCodes.Status202Accepted)]
+    public async Task<IActionResult> PasswordRecovery(
+        [FromServices] IRequestPasswordRecoveryCodeUseCase usecase,
+        [FromBody] RequestPasswordRecoveryJson request)
+    {
+        await usecase.Execute(request);
+
+        return Accepted();
     }
 }
