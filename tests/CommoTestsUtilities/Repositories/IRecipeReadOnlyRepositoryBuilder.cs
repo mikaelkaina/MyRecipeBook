@@ -23,5 +23,11 @@ public class IRecipeReadOnlyRepositoryBuilder
         return this;
     }
 
+    public IRecipeReadOnlyRepositoryBuilder FilterRecipes(User user, List<Recipe> recipes)
+    {
+        _mock.Setup(r => r.FilterRecipes(user.Id, It.IsAny<RecipeFilterDto>())).ReturnsAsync(recipes);
+        return this;
+    }
+
     public IRecipeReadOnlyRepository Build() => _mock.Object;
 }
