@@ -23,7 +23,7 @@ public class RecipeUpdateByIdUseCase : IRecipeUpdateByIdUseCase
     }
     public async Task Execute(Guid recipeId, RequestRecipeJson request)
     {
-        Validate(request);
+        ValidateAndThrowOnFailures(request);
 
         var recipe = await _repository.GetById(recipeId, _loggedUser.GetUserId());
         if(recipe is null)
@@ -34,7 +34,7 @@ public class RecipeUpdateByIdUseCase : IRecipeUpdateByIdUseCase
         await _unitOfWork.Commit();
     }
 
-    private void Validate(RequestRecipeJson request)
+    private void ValidateAndThrowOnFailures(RequestRecipeJson request)
     {
         var result = new RecipeValidator().Validate(request);
         if (result.IsValid == false)

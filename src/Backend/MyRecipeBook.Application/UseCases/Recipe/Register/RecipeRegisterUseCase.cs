@@ -24,7 +24,7 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
     
     public async Task<ResponseRegiteredRecipeJson> Execute(RequestRecipeJson request)
     {
-        Validate(request);
+        ValidateAndThrowOnFailures(request);
         
         var recipe = request.Adapt<Domain.Entities.Recipe>();
         recipe.UserId = _loggedUser.GetUserId();
@@ -40,7 +40,7 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
         };
     }
 
-    private static void Validate(RequestRecipeJson request)
+    private static void ValidateAndThrowOnFailures(RequestRecipeJson request)
     {
         var result = new RecipeValidator().Validate(request);
 
