@@ -192,4 +192,7 @@
   <data name="VALIDATION_TITLE_REQUIRED" xml:space="preserve">
     <value>Title is required.</value>
   </data>
+  <data name="VERIFICATION_CODE_INVALID" xml:space="preserve">
+    <value>Invalid or expired code.</value>
+  </data>
 </root>
