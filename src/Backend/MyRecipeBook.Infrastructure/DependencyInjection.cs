@@ -28,7 +28,8 @@ public static class DependencyInjection
         services.AddScoped<IUserUpdateOnlyRepository, UserRepository>();
 
         services.AddScoped<IVerificationCodeWriteOnlyRepository, VerificationCodeRepository>();
-        
+        services.AddScoped<IVerificationCodeReadOnlyRepository, VerificationCodeRepository>();
+
         services.AddScoped<IRecipeWriteOnlyRepository,  RecipeRepository>();
         services.AddScoped<IRecipeReadOnlyRepository, RecipeRepository>();
         services.AddScoped<IRecipeUpdateOnlyRepository, RecipeRepository>();
