@@ -39,7 +39,7 @@ public class RequestPasswordRecoveryCodeUseCase : IRequestPasswordRecoveryCodeUs
             UserId = user.Id,
         };
 
-        await _verificationCodeWriteOnlyRepository.Add(verificationCode);
+        await _verificationCodeWriteOnlyRepository.Replace(verificationCode);
         await _unitOfWork.Commit();
     }
 }   

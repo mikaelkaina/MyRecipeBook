@@ -12,5 +12,5 @@ internal sealed class VerificationCodeRepository : IVerificationCodeWriteOnlyRep
         _dbContext = dbContext;
     }
 
-    public async Task Add(VerificationCode verificationCode) => await _dbContext.VerificationCodes.AddAsync(verificationCode);
+    public async Task Replace(VerificationCode verificationCode) => await _dbContext.VerificationCodes.AddAsync(verificationCode);
 }
