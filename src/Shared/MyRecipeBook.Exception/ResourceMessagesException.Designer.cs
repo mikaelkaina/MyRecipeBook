@@ -284,5 +284,14 @@ namespace MyRecipeBook.Exception {
                 return ResourceManager.GetString("VALIDATION_TITLE_REQUIRED", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid or expired code..
+        /// </summary>
+        public static string VERIFICATION_CODE_INVALID {
+            get {
+                return ResourceManager.GetString("VERIFICATION_CODE_INVALID", resourceCulture);
+            }
+        }
     }
 }
