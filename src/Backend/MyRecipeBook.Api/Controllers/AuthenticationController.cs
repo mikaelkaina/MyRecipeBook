@@ -5,6 +5,7 @@ using MyRecipeBook.Application.UseCases.PasswordRecovery.ResetPassword;
 using MyRecipeBook.Communication.Requets.User;
 using MyRecipeBook.Communication.Requets.VerificationCode;
 using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Communication.Responses.User;
 
 namespace MyRecipeBook.Api.Controllers;
 

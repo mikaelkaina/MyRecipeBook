@@ -6,6 +6,7 @@ using MyRecipeBook.Application.UseCases.User.Register;
 using MyRecipeBook.Application.UseCases.User.Update;
 using MyRecipeBook.Communication.Requets.User;
 using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Communication.Responses.User;
 
 namespace MyRecipeBook.Api.Controllers;
 

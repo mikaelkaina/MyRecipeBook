@@ -1,6 +1,6 @@
 ﻿using Mapster;
 using MyRecipeBook.Communication.Requets.Recipe;
-using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Communication.Responses.Recipe;
 using MyRecipeBook.Domain.Entities;
 using System.Runtime.CompilerServices;
 
