@@ -1,5 +1,5 @@
 ﻿using Mapster;
-using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Communication.Responses.Recipe;
 using MyRecipeBook.Domain.Identity;
 using MyRecipeBook.Domain.Repositories.Recipe;
 using MyRecipeBook.Exception;

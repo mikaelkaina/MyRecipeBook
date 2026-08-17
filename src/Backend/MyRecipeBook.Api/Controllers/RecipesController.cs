@@ -8,6 +8,7 @@ using MyRecipeBook.Application.UseCases.Recipe.Register;
 using MyRecipeBook.Application.UseCases.Recipe.UpdateById;
 using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Communication.Responses.Recipe;
 
 namespace MyRecipeBook.Api.Controllers;
 

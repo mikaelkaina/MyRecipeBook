@@ -1,5 +1,5 @@
 ﻿using MyRecipeBook.Communication.Requets.Recipe;
-using MyRecipeBook.Communication.Responses;
+using MyRecipeBook.Communication.Responses.Recipe;
 
 namespace MyRecipeBook.Application.UseCases.Recipe.Filter;
 
