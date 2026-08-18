@@ -286,6 +286,15 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Only PNG or JPG/JPEG images are accepted..
+        /// </summary>
+        public static string VALIDATON_ONLY_IMAGES_ACCESS {
+            get {
+                return ResourceManager.GetString("VALIDATON_ONLY_IMAGES_ACCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Invalid or expired code..
         /// </summary>
         public static string VERIFICATION_CODE_INVALID {
