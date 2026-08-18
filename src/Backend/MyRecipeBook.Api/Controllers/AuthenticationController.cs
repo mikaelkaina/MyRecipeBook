@@ -45,6 +45,6 @@ public class AuthenticationController : ControllerBase
     {
         await usecase.Execute(request);
 
-        return Ok();
+        return NoContent();
     }
 }
