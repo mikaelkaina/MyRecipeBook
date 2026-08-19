@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using MyRecipeBook.Communication.Requets.VerificationCode;
 
-namespace CommonTestsUtilities.Requests;
+namespace CommonTestsUtilities.Requests.Member;
 
 public class RequestResetPasswordJsonBuilder
 {
