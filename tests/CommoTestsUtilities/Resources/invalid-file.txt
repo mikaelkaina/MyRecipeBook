@@ -1,0 +1,123 @@
+{
+  "title": "Macarrão Cremoso com Frango",
+  "cookTime": "From30To60Minutes",
+  "ingredients": [
+    "500g de macarrão penne",
+    "300g de peito de frango em cubos",
+    "1 caixa de creme de leite",
+    "1/2 xícara de molho de tomate",
+    "1 cebola picada",
+    "2 dentes de alho picados",
+    "Sal a gosto",
+    "Pimenta-do-reino a gosto",
+    "Queijo parmesão ralado"
+  ],
+  "instructions": [
+    { "order": 1, "description": "Cozinhe o macarrão conforme as instruções da embalagem." },
+    { "order": 2, "description": "Refogue a cebola e o alho em uma panela até dourar." },
+    { "order": 3, "description": "Adicione o frango em cubos e cozinhe até ficar bem dourado." },
+    { "order": 4, "description": "Adicione o molho de tomate, o creme de leite, sal e pimenta." },
+    { "order": 5, "description": "Misture o molho com o macarrão cozido e finalize com queijo parmesão." }
+  ],
+  "dishTypes": ["Lunch", "Dinner"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "title": "Salada Caesar com Frango Grelhado",
+  "cookTime": "From15To30Minutes",
+  "ingredients": [
+    "200g de peito de frango grelhado fatiado",
+    "1 pé de alface romana",
+    "50g de queijo parmesão em lascas",
+    "1 xícara de croutons",
+    "1/2 xícara de molho caesar",
+    "Sal a gosto",
+    "Pimenta-do-reino a gosto"
+  ],
+  "instructions": [
+    { "order": 1, "description": "Lave e corte a alface romana em pedaços médios." },
+    { "order": 2, "description": "Grelhe o peito de frango temperado com sal e pimenta." },
+    { "order": 3, "description": "Fatie o frango grelhado em tiras." },
+    { "order": 4, "description": "Monte a salada com alface, croutons e frango." },
+    { "order": 5, "description": "Finalize com o molho caesar e o queijo parmesão em lascas." }
+  ],
+  "dishTypes": ["Lunch", "Snack"]
+}
+
+
+
+
+
+
+
+
+
+
+
+{
+  "title": "Bolo de Chocolate Simples",
+  "cookTime": "From30To60Minutes",
+  "ingredients": [
+    "2 xícaras de farinha de trigo",
+    "1 xícara de chocolate em pó",
+    "2 xícaras de açúcar",
+    "3 ovos",
+    "1 xícara de óleo",
+    "1 xícara de leite",
+    "1 colher de sopa de fermento em pó"
+  ],
+  "instructions": [
+    { "order": 1, "description": "Misture os ingredientes secos em uma tigela." },
+    { "order": 2, "description": "Adicione os ovos, o óleo e o leite, misturando bem." },
+    { "order": 3, "description": "Acrescente o fermento em pó por último e misture delicadamente." },
+    { "order": 4, "description": "Despeje a massa em uma forma untada e enfarinhada." },
+    { "order": 5, "description": "Asse em forno preaquecido a 180°C por 40 minutos." }
+  ],
+  "dishTypes": ["Dessert"]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "title": "Sopa de Legumes com Frango",
+  "cookTime": "MoreThan60Minutes",
+  "ingredients": [
+    "300g de peito de frango desfiado",
+    "2 cenouras picadas",
+    "2 batatas picadas",
+    "1 abobrinha picada",
+    "1 cebola picada",
+    "2 dentes de alho picados",
+    "1,5 litro de caldo de legumes",
+    "Sal a gosto",
+    "Cheiro-verde a gosto"
+  ],
+  "instructions": [
+    { "order": 1, "description": "Refogue a cebola e o alho em uma panela grande." },
+    { "order": 2, "description": "Adicione o frango desfiado e refogue por alguns minutos." },
+    { "order": 3, "description": "Acrescente a cenoura, a batata e a abobrinha." },
+    { "order": 4, "description": "Cubra com o caldo de legumes e cozinhe até os legumes ficarem macios." },
+    { "order": 5, "description": "Tempere com sal e finalize com cheiro-verde picado." }
+  ],
+  "dishTypes": ["Dinner", "Lunch"]
+}
