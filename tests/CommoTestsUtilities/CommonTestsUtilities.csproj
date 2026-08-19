@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\valid-image.png" />
+    <EmbeddedResource Include="Resources\valid-image.jpg" />
+    <EmbeddedResource Include="Resources\invalid-file.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="Secutiry\IAccessTokenGenerator.Builder.cs" />
   </ItemGroup>
 
