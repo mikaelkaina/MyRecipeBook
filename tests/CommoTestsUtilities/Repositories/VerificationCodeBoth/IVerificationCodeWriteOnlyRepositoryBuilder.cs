@@ -1,7 +1,7 @@
 ﻿using Moq;
 using MyRecipeBook.Domain.Repositories.VerificationCode;
 
-namespace CommonTestsUtilities.Repositories;
+namespace CommonTestsUtilities.Repositories.VerificationCodeBoth;
 
 public class IVerificationCodeWriteOnlyRepositoryBuilder
 {

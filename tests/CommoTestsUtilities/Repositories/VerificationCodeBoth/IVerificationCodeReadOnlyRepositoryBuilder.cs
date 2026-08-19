@@ -2,7 +2,7 @@
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Repositories.VerificationCode;
 
-namespace CommonTestsUtilities.Repositories;
+namespace CommonTestsUtilities.Repositories.VerificationCodeBoth;
 
 public class IVerificationCodeReadOnlyRepositoryBuilder
 {
