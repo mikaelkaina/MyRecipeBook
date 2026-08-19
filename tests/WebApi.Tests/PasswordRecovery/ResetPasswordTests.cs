@@ -1,5 +1,4 @@
 ﻿using CommonTestsUtilities.Entities;
-using CommonTestsUtilities.Requests;
 using MyRecipeBook.Communication.Requets.VerificationCode;
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Enums;
@@ -12,6 +11,7 @@ using System.Text.Json;
 using WebApi.Tests.InLineData;
 using WebApi.Tests.Resource;
 using Microsoft.EntityFrameworkCore;
+using CommonTestsUtilities.Requests.Member;
 
 namespace WebApi.Tests.PasswordRecovery;
 

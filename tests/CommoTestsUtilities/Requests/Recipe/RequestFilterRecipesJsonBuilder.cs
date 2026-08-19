@@ -2,7 +2,7 @@
 using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Communication.Enums;
 
-namespace CommonTestsUtilities.Requests;
+namespace CommonTestsUtilities.Requests.Recipe;
 
 public class RequestFilterRecipesJsonBuilder
 {

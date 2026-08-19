@@ -1,4 +1,4 @@
-﻿using CommonTestsUtilities.Requests;
+﻿using CommonTestsUtilities.Requests.Member;
 using MyRecipeBook.Application.UseCases.User.Register;
 using MyRecipeBook.Exception;
 using Shouldly;

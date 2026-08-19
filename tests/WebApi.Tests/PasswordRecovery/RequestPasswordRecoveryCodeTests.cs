@@ -1,5 +1,5 @@
 ﻿using CommonTestsUtilities.Entities;
-using CommonTestsUtilities.Requests;
+using CommonTestsUtilities.Requests.Member;
 using Shouldly;
 using System.Net;
 using System.Net.Http.Json;

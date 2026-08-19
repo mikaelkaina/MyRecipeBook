@@ -1,5 +1,5 @@
 ﻿using CommonTestsUtilities.Entities;
-using CommonTestsUtilities.Requests;
+using CommonTestsUtilities.Requests.Member;
 using CommonTestsUtilities.Secutiry;
 using MyRecipeBook.Exception;
 using Shouldly;

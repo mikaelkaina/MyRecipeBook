@@ -1,4 +1,4 @@
-﻿using CommonTestsUtilities.Requests;
+﻿using CommonTestsUtilities.Requests.Member;
 using Microsoft.AspNetCore.Mvc.Testing;
 using MyRecipeBook.Exception;
 using Shouldly;

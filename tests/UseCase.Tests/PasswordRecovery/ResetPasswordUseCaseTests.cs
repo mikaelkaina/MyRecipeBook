@@ -1,6 +1,6 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Repositories;
-using CommonTestsUtilities.Requests;
+using CommonTestsUtilities.Requests.Member;
 using CommonTestsUtilities.Secutiry;
 using MyRecipeBook.Application.UseCases.PasswordRecovery.ResetPassword;
 using MyRecipeBook.Domain.Entities;
