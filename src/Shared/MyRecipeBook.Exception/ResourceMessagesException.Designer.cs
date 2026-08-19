@@ -286,11 +286,11 @@ namespace MyRecipeBook.Exception {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Only PNG or JPG/JPEG images are accepted..
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Only PNG or JPG/JPEG images are allowed..
         /// </summary>
-        public static string VALIDATON_ONLY_IMAGES_ACCESS {
+        public static string VALIDATON_ONLY_IMAGES_ACCEPTED {
             get {
-                return ResourceManager.GetString("VALIDATON_ONLY_IMAGES_ACCESS", resourceCulture);
+                return ResourceManager.GetString("VALIDATON_ONLY_IMAGES_ACCEPTED", resourceCulture);
             }
         }
         
