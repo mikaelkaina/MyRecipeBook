@@ -1,6 +1,7 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Repositories;
 using CommonTestsUtilities.Repositories.Member;
+using CommonTestsUtilities.Repositories.VerificationCodeBoth;
 using CommonTestsUtilities.Requests.Member;
 using MyRecipeBook.Application.UseCases.PasswordRecovery.RequestCode;
 using Shouldly;
