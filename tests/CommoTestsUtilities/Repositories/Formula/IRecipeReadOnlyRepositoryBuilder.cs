@@ -3,7 +3,7 @@ using MyRecipeBook.Domain.Dtos;
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Repositories.Recipe;
 
-namespace CommonTestsUtilities.Repositories;
+namespace CommonTestsUtilities.Repositories.Formula;
 
 public class IRecipeReadOnlyRepositoryBuilder
 {

@@ -2,7 +2,7 @@
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Repositories.User;
 
-namespace CommonTestsUtilities.Repositories;
+namespace CommonTestsUtilities.Repositories.Member;
 
 public class IUserReadOnlyRepositoryBuilder
 {
