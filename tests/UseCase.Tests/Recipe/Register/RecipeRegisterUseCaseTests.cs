@@ -43,7 +43,7 @@ public class RecipeRegisterUseCaseTests
 
         var useCase = CreateUseCase(user);
 
-        var exception = await useCase.Execute(request).ShouldThrowAsync<ErrorOnValidationException>();
+        var exception = await useCase.Execute(request, recipeIllustration: null).ShouldThrowAsync<ErrorOnValidationException>();
         exception.ShouldSatisfyAllConditions(ex =>
         {
             ex.GetStatusCode().ShouldBe(System.Net.HttpStatusCode.BadRequest);

@@ -1,6 +1,4 @@
-﻿using FileTypeChecker.Extensions;
-using FileTypeChecker.Types;
-using MyRecipeBook.Application.Extensions;
+﻿using MyRecipeBook.Application.Extensions;
 using MyRecipeBook.Domain.Extensions;
 using MyRecipeBook.Domain.Identity;
 using MyRecipeBook.Exception;
@@ -21,6 +19,6 @@ public class ChangeProfilePictureUseCase : IChangeProfilePictureUseCase
     {
         var contentType = profilePicture.DetectImageContentType();
         if (contentType.IsEmpty())
-            throw new ErrorOnValidationException([ResourceMessagesException.VALIDATON_ONLY_IMAGES_ACCESS]);
+            throw new ErrorOnValidationException([ResourceMessagesException.VALIDATON_ONLY_IMAGES_ACCEPTED]);
     }
 }

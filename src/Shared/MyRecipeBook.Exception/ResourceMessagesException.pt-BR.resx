@@ -192,8 +192,8 @@
   <data name="VALIDATION_TITLE_REQUIRED" xml:space="preserve">
     <value>O título é obrigatório.</value>
   </data>
-  <data name="VALIDATON_ONLY_IMAGES_ACCESS" xml:space="preserve">
-    <value>Apenas imagens PNG ou JPG/PEG são aceitas.</value>
+  <data name="VALIDATON_ONLY_IMAGES_ACCEPTED" xml:space="preserve">
+    <value>apenas imagens PNG ou JPG/PEG são permitidas.</value>
   </data>
   <data name="VERIFICATION_CODE_INVALID" xml:space="preserve">
     <value>Código inválido ou expirado.</value>

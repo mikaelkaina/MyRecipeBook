@@ -36,7 +36,7 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
         {
             var contentType = recipeIllustration.DetectImageContentType();
             if(contentType.IsEmpty())
-                throw new ErrorOnValidationException([ResourceMessagesException.VALIDATON_ONLY_IMAGES_ACCESS]);
+                throw new ErrorOnValidationException([ResourceMessagesException.VALIDATON_ONLY_IMAGES_ACCEPTED]);
         }
         
         await _recipeWriteOnlyRepository.Add(recipe);
