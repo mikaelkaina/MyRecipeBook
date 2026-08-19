@@ -2,7 +2,7 @@
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Repositories.Recipe;
 
-namespace CommonTestsUtilities.Repositories;
+namespace CommonTestsUtilities.Repositories.Formula;
 
 public class IRecipeUpdateOnlyRepositoryBuilder
 {
