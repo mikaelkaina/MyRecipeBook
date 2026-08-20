@@ -15,6 +15,8 @@ internal static class StreamExtension
         else if(stream.Is<JointPhotographicExpertsGroup>())
             contentType = "image/jpeg";
 
+        stream.Position = 0;
+
         return contentType;
     }
 }
