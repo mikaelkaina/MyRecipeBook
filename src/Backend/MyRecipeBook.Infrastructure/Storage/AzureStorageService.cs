@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Azure.Storage.Sas;
 using MyRecipeBook.Domain.Entities;
 using MyRecipeBook.Domain.Storage;
 
@@ -7,7 +8,10 @@ namespace MyRecipeBook.Infrastructure.Storage;
 
 internal sealed class AzureStorageService : IStorageService
 {
-    private const string ProfilePicturesContainerName = "profile-picture";
+    private const string ProfilePictureFileName = "profile-picture";
+    private const uint ProfilePictureExpirationInMinutes = 60;
+    private const uint RecipeIllustrationExpirationInMinutes = 60;
+
     private readonly BlobServiceClient _blobServiceClient;
 
     public AzureStorageService(BlobServiceClient blobServiceClient)
@@ -15,37 +19,48 @@ internal sealed class AzureStorageService : IStorageService
         _blobServiceClient = blobServiceClient;
     }
 
+    public string GetRecipeIllustrationUrl(Guid userId, Guid recipeId)
+    {
+        return GenerateReadUrl(userId, recipeId.ToString(), RecipeIllustrationExpirationInMinutes);
+    }
+
+    public string GetProfilePictureUrl(User user)
+    {
+        return GenerateReadUrl(user.Id, ProfilePictureFileName, ProfilePictureExpirationInMinutes);
+    }
+
     public async Task UploadIllustration(Recipe recipe, Stream file, string contentType)
     {
-        var containerClient = _blobServiceClient.GetBlobContainerClient(recipe.UserId.ToString());
-
-        await containerClient.CreateIfNotExistsAsync();
-
-        var blobClient = containerClient.GetBlobClient(recipe.Id.ToString());
-
-        await blobClient.UploadAsync(file, new BlobUploadOptions
-        {
-            HttpHeaders = new BlobHttpHeaders
-            {
-                ContentType = contentType
-            }
-        });
+        await Upload(recipe.UserId, file, recipe.Id.ToString(), contentType);
     }
 
     public async Task UploadProfilePicture(User user, Stream file, string contentType)
     {
-        var containerClient = _blobServiceClient.GetBlobContainerClient(user.Id.ToString());
+        await Upload(user.Id, file, ProfilePictureFileName, contentType);
+    }
+
+    private string GenerateReadUrl(Guid userId, string blobName, uint expirationInMinutes)
+    {
+        var blob = _blobServiceClient
+            .GetBlobContainerClient(userId.ToString())
+            .GetBlobClient(blobName);
+
+        return blob
+            .GenerateSasUri(BlobSasPermissions.Read, DateTime.UtcNow.AddMinutes(expirationInMinutes))
+            .ToString();
+    }
+
+    private async Task Upload(Guid userId, Stream file, string blobName, string contentType)
+    {
+        var containerClient = _blobServiceClient.GetBlobContainerClient(userId.ToString());
 
         await containerClient.CreateIfNotExistsAsync();
 
-        var blobClient = containerClient.GetBlobClient(ProfilePicturesContainerName);
+        var blobClient = containerClient.GetBlobClient(blobName);
 
-        await blobClient.UploadAsync(file, new BlobUploadOptions
+        await blobClient.UploadAsync(file, new BlobHttpHeaders
         {
-            HttpHeaders = new BlobHttpHeaders
-            {
-                ContentType = contentType
-            }
+            ContentType = contentType
         });
     }
 }
