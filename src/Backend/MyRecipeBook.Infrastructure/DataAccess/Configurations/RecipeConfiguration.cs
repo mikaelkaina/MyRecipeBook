@@ -33,5 +33,9 @@ internal class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
             .WithMany()
             .HasForeignKey(r => r.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Property(r => r.HasImage)
+            .IsRequired()
+            .HasDefaultValue(false);
     }
 }

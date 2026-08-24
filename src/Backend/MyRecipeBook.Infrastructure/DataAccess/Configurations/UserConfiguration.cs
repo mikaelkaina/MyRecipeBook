@@ -26,5 +26,9 @@ internal class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(u => u.Active)
             .IsRequired();
+
+        builder.Property(u => u.HasImage)
+            .IsRequired()
+            .HasDefaultValue(false);
     }
 }
