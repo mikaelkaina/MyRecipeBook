@@ -1,6 +1,7 @@
 ﻿using MyRecipeBook.Application.Extensions;
 using MyRecipeBook.Domain.Extensions;
 using MyRecipeBook.Domain.Identity;
+using MyRecipeBook.Domain.Repositories.User;
 using MyRecipeBook.Domain.Storage;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Exception.ExceptionsBase;
@@ -11,11 +12,14 @@ public class ChangeProfilePictureUseCase : IChangeProfilePictureUseCase
 {
     private readonly ILoggedUser _loggedUser;
     private readonly IStorageService _storageService;
+    private readonly IUserUpdateOnlyRepository _userUpdateOnlyRepository;
 
-    public ChangeProfilePictureUseCase(ILoggedUser loggedUser, IStorageService storageService)
+    public ChangeProfilePictureUseCase(ILoggedUser loggedUser,
+        IStorageService storageService, IUserUpdateOnlyRepository userUpdateOnlyRepository)
     {
         _loggedUser = loggedUser;
         _storageService = storageService;
+        _userUpdateOnlyRepository = userUpdateOnlyRepository;
     }
 
     public async Task Execute(Stream profilePicture)
@@ -27,5 +31,7 @@ public class ChangeProfilePictureUseCase : IChangeProfilePictureUseCase
         var loggedUser = await _loggedUser.Get();
 
         await _storageService.UploadProfilePicture(loggedUser, profilePicture, contentType);
+
+        await _userUpdateOnlyRepository.UpdateProfilePictureStatus(loggedUser.Id, hasProfilePicture: true);
     }
 }
