@@ -23,7 +23,7 @@ public class GetUserProfileUseCase : IGetUserProfileUseCase
         {
             Name = loggedUser.Name,
             Email = loggedUser.Email,
-            ImagemUrl = loggedUser.HasImage ? _storageService.GetProfilePictureUrl(loggedUser) : string.Empty
+            ImageUrl = loggedUser.HasImage ? _storageService.GetProfilePictureUrl(loggedUser) : string.Empty
         };
     }
 }
