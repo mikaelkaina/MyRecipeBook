@@ -45,11 +45,11 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
             .Where(recipe => recipe.Active && recipe.UserId == userId)
             .OrderByDescending(recipe => recipe.CreatedAt)
             .Take(4)
-            .Select(recipe => new RecipeSummaryDto(recipe.Id, recipe.Title))
+            .Select(recipe => new RecipeSummaryDto(recipe.Id, recipe.Title, recipe.HasImage))
             .ToListAsync();
     }
 
-    public async Task<IList<Recipe>> FilterRecipes(Guid userId, RecipeFilterDto filter)
+    public async Task<IList<RecipeSummaryDto>> FilterRecipes(Guid userId, RecipeFilterDto filter)
     {
         var query = _dbContext
             .Recipes
@@ -66,7 +66,7 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
         if (filter.DishTypes.Any())
             query = query.Where(recipe => recipe.DishTypes.Any(dt => filter.DishTypes.Contains(dt.Type)));
         
-        return await query.ToListAsync();
+        return await query.Select(recipe => new RecipeSummaryDto(recipe.Id, recipe.Title, recipe.HasImage)).ToListAsync();
     }
 
     async Task<Recipe?> IRecipeUpdateOnlyRepository.GetById(Guid recipeId, Guid userId)
