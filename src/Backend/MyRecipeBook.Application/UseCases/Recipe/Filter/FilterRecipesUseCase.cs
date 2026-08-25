@@ -1,9 +1,11 @@
 ﻿using Mapster;
+using MyRecipeBook.Application.Extensions;
 using MyRecipeBook.Communication.Requets.Recipe;
 using MyRecipeBook.Communication.Responses.Recipe;
 using MyRecipeBook.Domain.Dtos;
 using MyRecipeBook.Domain.Identity;
 using MyRecipeBook.Domain.Repositories.Recipe;
+using MyRecipeBook.Domain.Storage;
 
 namespace MyRecipeBook.Application.UseCases.Recipe.Filter;
 
@@ -11,11 +13,14 @@ public class FilterRecipesUseCase : IFilterRecipesUseCase
 {
     private readonly ILoggedUser _loggedUser;
     private readonly IRecipeReadOnlyRepository _repository;
+    private readonly IStorageService _storageService;
 
-    public FilterRecipesUseCase(IRecipeReadOnlyRepository recipeReadOnlyRepository,  ILoggedUser loggedUser)
+    public FilterRecipesUseCase(IRecipeReadOnlyRepository recipeReadOnlyRepository, 
+        ILoggedUser loggedUser, IStorageService storageService)
     {
         _repository = recipeReadOnlyRepository;
         _loggedUser = loggedUser;
+        _storageService = storageService;
     }
     
     public async Task<ResponseRecipesJson> Excute(RequestFilterRecipesJson? request)
@@ -32,7 +37,7 @@ public class FilterRecipesUseCase : IFilterRecipesUseCase
         
         return new ResponseRecipesJson()
         {
-            Recipes = recipes.Adapt<IList<ResponseRecipeSummaryJson>>()
+            Recipes = recipes.ToResponseJson(_loggedUser.GetUserId(), _storageService)
         };
     }
 }

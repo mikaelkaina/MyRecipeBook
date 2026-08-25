@@ -6,6 +6,7 @@ using MyRecipeBook.Domain.Extensions;
 using MyRecipeBook.Domain.Identity;
 using MyRecipeBook.Domain.Repositories;
 using MyRecipeBook.Domain.Repositories.Recipe;
+using MyRecipeBook.Domain.Storage;
 using MyRecipeBook.Exception;
 using MyRecipeBook.Exception.ExceptionsBase;
 
@@ -16,13 +17,15 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
     private readonly IRecipeWriteOnlyRepository _recipeWriteOnlyRepository;
     private readonly ILoggedUser _loggedUser;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IStorageService _storageService;
 
     public RecipeRegisterUseCase(IRecipeWriteOnlyRepository recipeWriteOnlyRepository,
-        ILoggedUser loggedUser, IUnitOfWork unitOfWork)
+        ILoggedUser loggedUser, IUnitOfWork unitOfWork, IStorageService storageService)
     {
         _recipeWriteOnlyRepository = recipeWriteOnlyRepository;
         _loggedUser = loggedUser;
         _unitOfWork = unitOfWork;
+        _storageService = storageService;
     }
     
     public async Task<ResponseRegiteredRecipeJson> Execute(RequestRecipeJson request, Stream? recipeIllustration)
@@ -37,6 +40,10 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
             var contentType = recipeIllustration.DetectImageContentType();
             if(contentType.IsEmpty())
                 throw new ErrorOnValidationException([ResourceMessagesException.VALIDATON_ONLY_IMAGES_ACCEPTED]);
+
+            recipe.HasImage = true;
+
+            await _storageService.UploadIllustration(recipe, recipeIllustration, contentType);
         }
         
         await _recipeWriteOnlyRepository.Add(recipe);
@@ -47,6 +54,7 @@ public class RecipeRegisterUseCase : IRecipeRegisterUseCase
         {
             Id = recipe.Id,
             Title = recipe.Title,
+            ImageUrl = recipe.HasImage ? _storageService.GetRecipeIllustrationUrl(userId: recipe.UserId, recipeId: recipe.Id) : string.Empty
         };
     }
 
