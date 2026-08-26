@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MyRecipeBook.Application.UseCases.Recipe.ChangeIllustration;
 using MyRecipeBook.Application.UseCases.Recipe.DeleteById;
 using MyRecipeBook.Application.UseCases.Recipe.Filter;
 using MyRecipeBook.Application.UseCases.Recipe.GetById;
@@ -44,6 +45,19 @@ public class RecipesController : ControllerBase
     {
         var recipe = await useCase.Execute(id);
         return Ok(recipe);
+    }
+
+    [HttpPut("{id}/illustration")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> ChangeIllustration(
+        [FromRoute] Guid id, [FromForm] IFormFile recipeIllustration, 
+        [FromServices] IChangeIllustrationUseCase useCase)
+    {
+        await useCase.Execute(id, recipeIllustration.OpenReadStream());
+
+        return NoContent();
     }
 
     [HttpGet("recent")]
