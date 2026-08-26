@@ -3,6 +3,7 @@ using MyRecipeBook.Application.Mappings;
 using MyRecipeBook.Application.UseCases.Login.WithEmailAndPassword;
 using MyRecipeBook.Application.UseCases.PasswordRecovery.RequestCode;
 using MyRecipeBook.Application.UseCases.PasswordRecovery.ResetPassword;
+using MyRecipeBook.Application.UseCases.Recipe.ChangeIllustration;
 using MyRecipeBook.Application.UseCases.Recipe.DeleteById;
 using MyRecipeBook.Application.UseCases.Recipe.Filter;
 using MyRecipeBook.Application.UseCases.Recipe.GetById;
@@ -39,5 +40,6 @@ public static class DependencyInjection
         services.AddScoped<IRecipeUpdateByIdUseCase, RecipeUpdateByIdUseCase>();
         services.AddScoped<IGetRecentRecipesUseCase, GetRecentRecipesUseCase>();
         services.AddScoped<IFilterRecipesUseCase, FilterRecipesUseCase>();
+        services.AddScoped<IChangeIllustrationUseCase, ChangeIllustrationUseCase>();
     }
 }
