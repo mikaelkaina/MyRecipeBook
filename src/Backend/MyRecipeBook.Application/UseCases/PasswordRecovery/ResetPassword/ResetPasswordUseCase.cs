@@ -60,6 +60,6 @@ public class ResetPasswordUseCase : IResetPasswordUseCase
 
         var result = new ResetPasswordValidator().Validate(request);
         if (result.IsValid == false)
-            throw new ErrorOnValidationException(result.Errors.Select(error => error.ErrorMessage).ToList());
+            throw new ErrorOnValidationException([.. result.Errors.Select(error => error.ErrorMessage)]);
     }
 }

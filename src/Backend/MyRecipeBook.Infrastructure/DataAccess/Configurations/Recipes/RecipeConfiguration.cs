@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using MyRecipeBook.Domain.Entities;
 
-namespace MyRecipeBook.Infrastructure.DataAccess.Configurations;
+namespace MyRecipeBook.Infrastructure.DataAccess.Configurations.Recipes;
 
 internal class RecipeConfiguration : IEntityTypeConfiguration<Recipe>
 {
