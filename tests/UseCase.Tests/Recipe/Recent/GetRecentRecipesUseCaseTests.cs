@@ -9,20 +9,24 @@ namespace UseCase.Tests.Recipe.Recent;
 
 public class GetRecentRecipesUseCaseTests
 {
-    [Fact]
-    public async Task Success()
+    [Theory]
+    [InlineData(true, IStorageServiceBuilder.FakeUrl)]
+    [InlineData(false, "")]
+    public async Task Success(bool hasImage, string expectedUrl)
     {
         var (user, _) = UserBuilder.Build();
-        var recipes = RecipeBuilder.BuildMany(user, count: 2);
+        var recipe = RecipeBuilder.Build(user);
+        recipe.HasImage = hasImage;
 
-        var useCase = CreateUseCase(user, recipes);
+        var useCase = CreateUseCase(user, [recipe]);
 
         var result = await useCase.Execute();
 
         result.ShouldNotBeNull();
-        result.Recipes.ShouldNotBeEmpty();
-        result.Recipes.Count.ShouldBe(2);
-        result.Recipes.ShouldAllBe(recipe => recipes.Any(r => r.Id == recipe.Id && r.Title == recipe.Title));
+        result.Recipes.ShouldNotBeNull();
+        result.Recipes.Count.ShouldBe(1);
+        result.Recipes.ShouldContain(recipeSummary => recipeSummary.Id == recipe.Id && recipeSummary.Title.Equals(recipe.Title));
+        result.Recipes.ShouldAllBe(recipeSummary => recipeSummary.ImageUrl.Equals(expectedUrl));
     }
 
     [Fact]

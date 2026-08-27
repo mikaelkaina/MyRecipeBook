@@ -23,7 +23,7 @@ public class FilterRecipesUseCase : IFilterRecipesUseCase
         _storageService = storageService;
     }
     
-    public async Task<ResponseRecipesJson> Excute(RequestFilterRecipesJson? request)
+    public async Task<ResponseRecipesJson> Execute(RequestFilterRecipesJson? request)
     {
         var filter = request is null ? new RecipeFilterDto() : 
             new RecipeFilterDto
