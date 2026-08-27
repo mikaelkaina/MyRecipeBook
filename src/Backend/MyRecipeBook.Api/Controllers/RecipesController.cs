@@ -34,7 +34,7 @@ public class RecipesController : ControllerBase
     public async Task<IActionResult> Filter([FromBody] RequestFilterRecipesJson? request,
         [FromServices] IFilterRecipesUseCase useCase)
     {
-        var response = await useCase.Excute(request);
+        var response = await useCase.Execute(request);
         return Ok(response);
     }
     
