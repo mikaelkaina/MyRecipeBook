@@ -40,7 +40,7 @@ public class ChangeIllustrationUseCase : IChangeIllustrationUseCase
         if (recipe is null)
             throw new ErrorOnValidationException([ResourceMessagesException.VALIDATION_RECIPE_NOT_FOUND]);
 
-         await _storageService.UploadIllustration(recipe, recipeIllustration, contentyType);
+        await _storageService.UploadIllustration(recipe, recipeIllustration, contentyType);
 
         recipe.HasImage = true;
 

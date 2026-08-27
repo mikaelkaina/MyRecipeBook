@@ -4,6 +4,7 @@ using CommonTestsUtilities.Identity;
 using CommonTestsUtilities.Repositories;
 using CommonTestsUtilities.Repositories.Formula;
 using CommonTestsUtilities.Requests.Recipe;
+using CommonTestsUtilities.Storage;
 using MyRecipeBook.Application.Mappings;
 using MyRecipeBook.Application.UseCases.Recipe.Register;
 using MyRecipeBook.Exception;
@@ -110,7 +111,8 @@ public class RecipeRegisterUseCaseTests
         var recipeWriteOnlyRepository = new IRecipeWriteOnlyRepositoryBuilder().Build();
         var loggedUser = ILoggedUserBuilder.Build(user);
         var unitOfWork = IUnitOfWorkBuilder.Build();
+        var storageService = IStorageServiceBuilder.Build();
 
-        return new RecipeRegisterUseCase(recipeWriteOnlyRepository, loggedUser, unitOfWork);
+        return new RecipeRegisterUseCase(recipeWriteOnlyRepository, loggedUser, unitOfWork, storageService);
     }
 }

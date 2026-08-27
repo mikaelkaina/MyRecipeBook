@@ -2,6 +2,7 @@
 using CommonTestsUtilities.Repositories.Member;
 using CommonTestsUtilities.Requests.Member;
 using CommonTestsUtilities.Secutiry;
+using CommonTestsUtilities.Storage;
 using MyRecipeBook.Application.UseCases.Login.WithEmailAndPassword;
 using MyRecipeBook.Domain.Extensions;
 using MyRecipeBook.Exception;
@@ -74,6 +75,9 @@ public class LoginWithEmailAndPasswordUseCaseTests
         if(user is not null)
             userReadOnlyRepositoryBuilder.GetByEmail(user);
 
-        return new LoginWithEmailAndPasswordUseCase(passwordHasherBuilder.Build(), userReadOnlyRepositoryBuilder.Build(), accessTokenGeneratorBuilder);
+        var storageServiceBuilder = IStorageServiceBuilder.Build();
+
+        return new LoginWithEmailAndPasswordUseCase(passwordHasherBuilder.Build(),
+            userReadOnlyRepositoryBuilder.Build(), accessTokenGeneratorBuilder, storageServiceBuilder);
     }
 }
