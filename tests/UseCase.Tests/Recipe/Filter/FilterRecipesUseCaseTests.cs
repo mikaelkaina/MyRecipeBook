@@ -2,6 +2,7 @@
 using CommonTestsUtilities.Identity;
 using CommonTestsUtilities.Repositories.Formula;
 using CommonTestsUtilities.Requests.Recipe;
+using CommonTestsUtilities.Storage;
 using MyRecipeBook.Application.UseCases.Recipe.Filter;
 using Shouldly;
 
@@ -66,6 +67,8 @@ public class FilterRecipesUseCaseTests
 
         var loggedUser = ILoggedUserBuilder.Build(user);
 
-        return new FilterRecipesUseCase(repository, loggedUser);
+        var storageService = IStorageServiceBuilder.Build();
+
+        return new FilterRecipesUseCase(repository, loggedUser, storageService);
     }
 }

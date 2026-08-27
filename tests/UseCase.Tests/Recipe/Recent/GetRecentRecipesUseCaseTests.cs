@@ -1,6 +1,7 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Identity;
 using CommonTestsUtilities.Repositories.Formula;
+using CommonTestsUtilities.Storage;
 using MyRecipeBook.Application.UseCases.Recipe.Recent;
 using Shouldly;
 
@@ -46,6 +47,8 @@ public class GetRecentRecipesUseCaseTests
 
         var loggedUser = ILoggedUserBuilder.Build(user);
 
-        return new GetRecentRecipesUseCase(loggedUser, repository);
+        var storageService = IStorageServiceBuilder.Build();
+
+        return new GetRecentRecipesUseCase(loggedUser, repository, storageService);
     }
 }

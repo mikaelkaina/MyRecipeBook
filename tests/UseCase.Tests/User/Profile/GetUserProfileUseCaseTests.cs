@@ -1,5 +1,6 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Identity;
+using CommonTestsUtilities.Storage;
 using MyRecipeBook.Application.UseCases.User.Profile;
 using Shouldly;
 
@@ -24,6 +25,8 @@ public class GetUserProfileUseCaseTests
     private static GetUserProfileUseCase CreateUseCase(MyRecipeBook.Domain.Entities.User user)
     {
         var loggedUser = ILoggedUserBuilder.Build(user);
-        return new GetUserProfileUseCase(loggedUser);
+        var storageService = IStorageServiceBuilder.Build();
+
+        return new GetUserProfileUseCase(loggedUser, storageService);
     }
 }

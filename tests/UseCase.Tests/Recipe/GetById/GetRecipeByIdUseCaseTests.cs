@@ -1,6 +1,7 @@
 ﻿using CommonTestsUtilities.Entities;
 using CommonTestsUtilities.Identity;
 using CommonTestsUtilities.Repositories.Formula;
+using CommonTestsUtilities.Storage;
 using MyRecipeBook.Application.Mappings;
 using MyRecipeBook.Application.UseCases.Recipe.GetById;
 using MyRecipeBook.Exception;
@@ -58,6 +59,8 @@ public class GetRecipeByIdUseCaseTests
 
         var loggedUser = ILoggedUserBuilder.Build(user);
 
-        return new GetRecipeByIdUseCase(repository, loggedUser);
+        var storageService = IStorageServiceBuilder.Build();
+
+        return new GetRecipeByIdUseCase(repository, loggedUser, storageService);
     }
 }
