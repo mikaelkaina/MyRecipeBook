@@ -17,7 +17,7 @@ public class IRecipeReadOnlyRepositoryBuilder
 
     public IRecipeReadOnlyRepositoryBuilder GetRecentRecipes(User user, List<Recipe> recipes)
     {
-        var recipesDto = recipes.Select(recipe => new RecipeSummaryDto(recipe.Id, recipe.Title)).ToList();
+        var recipesDto = recipes.Select(recipe => new RecipeSummaryDto(recipe.Id, recipe.Title, recipe.HasImage)).ToList();
         
         _mock.Setup(r => r.GetRecentRecipes(user.Id)).ReturnsAsync(recipesDto);
         return this;
@@ -25,7 +25,9 @@ public class IRecipeReadOnlyRepositoryBuilder
 
     public IRecipeReadOnlyRepositoryBuilder FilterRecipes(User user, List<Recipe> recipes)
     {
-        _mock.Setup(r => r.FilterRecipes(user.Id, It.IsAny<RecipeFilterDto>())).ReturnsAsync(recipes);
+        var recipesDto = recipes.Select(recipe => new RecipeSummaryDto(recipe.Id, recipe.Title, recipe.HasImage)).ToList();
+
+        _mock.Setup(r => r.FilterRecipes(user.Id, It.IsAny<RecipeFilterDto>())).ReturnsAsync(recipesDto);
         return this;
     }
 
