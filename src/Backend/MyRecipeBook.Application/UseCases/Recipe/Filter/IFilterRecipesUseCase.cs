@@ -5,5 +5,5 @@ namespace MyRecipeBook.Application.UseCases.Recipe.Filter;
 
 public interface IFilterRecipesUseCase
 {
-    Task<ResponseRecipesJson> Excute(RequestFilterRecipesJson? request);
+    Task<ResponseRecipesJson> Execute(RequestFilterRecipesJson? request);
 }

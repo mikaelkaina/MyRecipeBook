@@ -2,6 +2,7 @@
 using CommonTestsUtilities.Identity;
 using CommonTestsUtilities.Repositories.Formula;
 using CommonTestsUtilities.Requests.Recipe;
+using CommonTestsUtilities.Storage;
 using MyRecipeBook.Application.UseCases.Recipe.Filter;
 using Shouldly;
 
@@ -9,24 +10,26 @@ namespace UseCase.Tests.Recipe.Filter;
 
 public class FilterRecipesUseCaseTests
 {
-
-    [Fact]
-    public async Task Success()
+    [Theory]
+    [InlineData(true, IStorageServiceBuilder.FakeUrl)]
+    [InlineData(false, "")]
+    public async Task Success_WhenRequestIsNull(bool hasImage, string expectedUrl)
     {
         var (user, _) = UserBuilder.Build();
-        var recipes = RecipeBuilder.BuildMany(user, count: 3);
-        var request = RequestFilterRecipesJsonBuilder.Build();
+        var recipe = RecipeBuilder.Build(user);
+        recipe.HasImage = hasImage;
 
-        var useCase = CreateUseCase(user, recipes);
+        var useCase = CreateUseCase(user, [recipe]);
 
-        var result = await useCase.Excute(request);
+        var result = await useCase.Execute(request: null);
 
         result.ShouldNotBeNull();
-        result.Recipes.ShouldNotBeEmpty();
-        result.Recipes.Count.ShouldBe(3);
-        result.Recipes.ShouldAllBe(r => recipes.Any(recipe =>
-            recipe.Id == r.Id && recipe.Title == r.Title));
+        result.Recipes.ShouldNotBeNull();
+        result.Recipes.Count.ShouldBe(1);
+        result.Recipes.ShouldContain(recipeSummary => recipeSummary.Id == recipe.Id && recipeSummary.Title.Equals(recipe.Title));
+        result.Recipes.ShouldAllBe(recipeSummary => recipeSummary.ImageUrl.Equals(expectedUrl));
     }
+
 
     [Fact]
     public async Task Success_ShouldReturnEmptyList_WhenNoRecipesMatchFilter()
@@ -66,6 +69,8 @@ public class FilterRecipesUseCaseTests
 
         var loggedUser = ILoggedUserBuilder.Build(user);
 
-        return new FilterRecipesUseCase(repository, loggedUser);
+        var storageService = IStorageServiceBuilder.Build();
+
+        return new FilterRecipesUseCase(repository, loggedUser, storageService);
     }
 }

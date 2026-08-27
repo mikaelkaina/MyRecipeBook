@@ -13,10 +13,14 @@ namespace UseCase.Tests.Login.WithEmailAndPassword;
 
 public class LoginWithEmailAndPasswordUseCaseTests
 {
-    [Fact]
-    public async Task Success()
+    [Theory]
+    [InlineData(true, IStorageServiceBuilder.FakeUrl)]
+    [InlineData(false, "")]
+    public async Task Success(bool hasImage, string expectedUrl)
     {
         var (user, _) = UserBuilder.Build();
+        user.HasImage = hasImage;
+
         var request = RequestLoginJsonBuilder.Build();
         request.Email = user.Email;
 
@@ -29,6 +33,7 @@ public class LoginWithEmailAndPasswordUseCaseTests
         result.Name.ShouldBe(user.Name);
         result.Tokens.AccessToken.ShouldNotBeNullOrEmpty();
         result.Tokens.RefreshToken.ShouldBeNullOrEmpty();
+        result.ImageUrl.ShouldBe(expectedUrl);
     }
 
     [Fact]
