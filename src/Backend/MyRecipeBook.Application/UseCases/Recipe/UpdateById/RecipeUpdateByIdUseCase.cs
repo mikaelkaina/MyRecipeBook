@@ -38,6 +38,6 @@ public class RecipeUpdateByIdUseCase : IRecipeUpdateByIdUseCase
     {
         var result = new RecipeValidator().Validate(request);
         if (result.IsValid == false)
-            throw new ErrorOnValidationException(result.Errors.Select(error => error.ErrorMessage).ToList());
+            throw new ErrorOnValidationException([.. result.Errors.Select(error => error.ErrorMessage)]);
     }
 }
