@@ -35,6 +35,7 @@ public class RecipeRegisterUseCaseTests
         result.ShouldNotBeNull();
         result.Id.ShouldNotBe(Guid.Empty);
         result.Title.ShouldBe(request.Title);
+        result.ImageUrl.ShouldBeEmpty();
     }
 
     [Fact]
@@ -49,6 +50,7 @@ public class RecipeRegisterUseCaseTests
 
         result.ShouldNotBeNull();
         result.Title.ShouldBe(request.Title);
+        result.ImageUrl.ShouldBe(IStorageServiceBuilder.FakeUrl);
     }
 
     [Fact]
@@ -63,6 +65,7 @@ public class RecipeRegisterUseCaseTests
 
         result.ShouldNotBeNull();
         result.Title.ShouldBe(request.Title);
+        result.ImageUrl.ShouldBe(IStorageServiceBuilder.FakeUrl);
     }
 
     [Fact]
