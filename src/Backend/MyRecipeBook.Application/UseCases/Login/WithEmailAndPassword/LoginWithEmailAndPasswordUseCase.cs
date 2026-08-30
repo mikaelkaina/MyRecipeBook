@@ -43,7 +43,7 @@ public class LoginWithEmailAndPasswordUseCase : ILoginWithEmailAndPasswordUseCas
             ImageUrl = user.HasImage ? _storageService.GetProfilePictureUrl(user) : string.Empty,
             Tokens = new ResponseTokensJson
             {
-                AccessToken = _accessTokenGenerator.Generate(user),
+                AccessToken = _accessTokenGenerator.Generate(user)
             }
         };
     }
