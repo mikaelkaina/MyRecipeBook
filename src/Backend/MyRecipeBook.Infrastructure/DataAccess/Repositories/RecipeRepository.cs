@@ -61,6 +61,7 @@ internal sealed class RecipeRepository : IRecipeWriteOnlyRepository, IRecipeRead
         
         return await query.Select(recipe => new RecipeSummaryDto(recipe.Id, recipe.Title, recipe.HasImage)).ToListAsync();
     }
+
     async Task<Recipe?> IRecipeReadOnlyRepository.GetById(Guid recipeId, Guid userId)
     {
         return await GetFullRecipe()
