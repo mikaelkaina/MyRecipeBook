@@ -1,5 +1,3 @@
-# MyRecipeBook
-
 ## Visão geral
 
 O MyRecipeBook permite que usuários criem uma conta, se autentiquem e gerenciem sua coleção pessoal de receitas: criar, atualizar, excluir, filtrar e listar receitas, cada uma com ingredientes, modo de preparo, tipos de prato, tempo de cozimento e uma imagem ilustrativa opcional.
