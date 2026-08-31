@@ -1,9 +1,5 @@
 # MyRecipeBook
 
-Uma API REST de gerenciamento de receitas construída em **.NET 10**, seguindo os princípios de **Clean Architecture**, com forte separação entre domínio, regras de aplicação e infraestrutura.
-
-> Projeto de portfólio — backend completo e coberto por testes automatizados; frontend ainda não incluído neste repositório.
-
 ## Visão geral
 
 O MyRecipeBook permite que usuários criem uma conta, se autentiquem e gerenciem sua coleção pessoal de receitas: criar, atualizar, excluir, filtrar e listar receitas, cada uma com ingredientes, modo de preparo, tipos de prato, tempo de cozimento e uma imagem ilustrativa opcional.
